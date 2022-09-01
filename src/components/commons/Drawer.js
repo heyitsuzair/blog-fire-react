@@ -2,10 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { Drawer } from "@mui/material";
 import { Menu, Close } from "@mui/icons-material";
-import logo from "../../assets/img/logo-black.webp";
+import logo_black from "../../assets/img/logo-black.webp";
+import logo_white from "../../assets/img/logo-white.webp";
 import List from "./Lists";
-
+import { useContext } from "react";
+import modeContext from "../../context/modeContext";
 export default function TemporaryDrawer() {
+  const mode_context = useContext(modeContext);
+  // purpose: to check whether mode is light and dark and toggle the logo accoring to mode
+  const { mode } = mode_context;
   const [state, setState] = React.useState({
     left: false,
   });
@@ -30,7 +35,11 @@ export default function TemporaryDrawer() {
     >
       <div className="drawer-header">
         <div className="logo">
-          <img src={logo} width={100} alt="Loading..." />
+          <img
+            src={mode === "dark" ? logo_white : logo_black}
+            width={100}
+            alt="Loading..."
+          />
         </div>
         <div
           className="close-drawer"

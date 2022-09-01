@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 export default function NestedList() {
   return (
     <List
-      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+      sx={{ width: "100%", maxWidth: 360 }}
+      className="lists"
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
