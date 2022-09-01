@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ThemeSwitcher from "./components/commons/ThemeSwitcher";
 import ModeState from "./context/modeState";
+import BlogState from "./context/blogState";
 import { useEffect } from "react";
 
 function App() {
@@ -17,13 +18,15 @@ function App() {
   return (
     <div className="App">
       <ModeState>
-        <Router>
-          <ThemeSwitcher />
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </Router>
+        <BlogState>
+          <Router>
+            <ThemeSwitcher />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Router>
+        </BlogState>
       </ModeState>
     </div>
   );

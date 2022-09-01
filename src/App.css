@@ -160,7 +160,6 @@ body {
   width: 100%;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  z-index: 999;
 }
 /* Arrows Component */
 .arrow-icons {
@@ -196,6 +195,7 @@ body {
 .post-item .content {
   width: 70%;
 }
+
 .post-item .category span {
   color: var(--color-secondary);
 }
@@ -261,6 +261,7 @@ body {
   text-decoration: none;
   font-family: "Poppins" !important;
 }
+
 /* Media Queries */
 
 @media (max-width: 768px) {

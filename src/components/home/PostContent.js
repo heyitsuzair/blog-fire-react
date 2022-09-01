@@ -1,7 +1,7 @@
 import React from "react";
-import Arrows from "./Arrows";
 import PostContentItem from "./PostContentItem";
 import { Grid } from "@mui/material";
+import Arrows from "../commons/Arrows";
 export default function PostContent() {
   return (
     <div className="post-content">
