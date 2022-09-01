@@ -155,6 +155,10 @@ body {
   background-color: var(--color-primary);
   color: white;
 }
+/* Home Component */
+.home {
+  height: 100vh;
+}
 /* Hero Component */
 .hero img {
   width: 100%;
@@ -190,7 +194,7 @@ body {
   background-color: var(--color-white);
   padding: 40px 58px 40px 42px;
   border-radius: var(--radius);
-  margin-top: -10rem;
+  margin-top: -13rem;
 }
 .post-item .content {
   width: 70%;

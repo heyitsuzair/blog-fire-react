@@ -5,7 +5,7 @@ import Slider from "../commons/Slider";
 
 export default function Hero() {
   return (
-    <Container>
+    <Container sx={{ maxWidth: "1280px !important" }}>
       <div className="hero">
         <Slider />
       </div>

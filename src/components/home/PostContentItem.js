@@ -11,7 +11,10 @@ export default function PostContentItem() {
     <>
       {blogs.map((blog, index) => {
         return active === index ? (
-          <div className="post-item animate__animated animate__fadeIn">
+          <div
+            key={index}
+            className="post-item animate__animated animate__fadeIn"
+          >
             <div className="category">
               <span>{blog.category}</span>
             </div>

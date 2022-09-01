@@ -6,8 +6,9 @@ export default function ArrowForawrdComponent() {
   const blog_context = useContext(blogContext);
   const { setActive } = blog_context;
   // handle click
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setActive(1);
   };
-  return <ArrowForward onClick={() => handleClick()} />;
+  return <ArrowForward onClick={(e) => handleClick(e)} />;
 }

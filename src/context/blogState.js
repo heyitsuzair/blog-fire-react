@@ -15,7 +15,7 @@ export default function BlogState({ children }) {
       category: "Sports",
       title: "Sports",
       img: image2,
-      desc: "I am Sports",
+      desc: "I am Uzair A Senior Developer having experience in web development industry for 3 years",
       by: "Sports",
     },
   ]);

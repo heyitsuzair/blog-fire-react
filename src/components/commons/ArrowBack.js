@@ -7,9 +7,10 @@ export default function ArrowBackComponent() {
   const blog_context = useContext(blogContext);
   const { setActive } = blog_context;
   // handle click
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setActive(0);
   };
 
-  return <ArrowBack onClick={() => handleClick()} />;
+  return <ArrowBack onClick={(e) => handleClick(e)} />;
 }
