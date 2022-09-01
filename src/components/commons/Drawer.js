@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { Drawer } from "@mui/material";
 import { Menu, Close } from "@mui/icons-material";
 import logo from "../../assets/img/logo-black.webp";
+import List from "./Lists";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -38,6 +39,7 @@ export default function TemporaryDrawer() {
           <Close />
         </div>
       </div>
+      <List />
     </Box>
   );
 

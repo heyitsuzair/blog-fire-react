@@ -19,10 +19,10 @@ export default function Header() {
           alignItems="center"
           className="hidden"
         >
-          <MenuItem title="Home" />
-          <MenuItem title="Blog" />
-          <MenuItem title="Sign Up" />
-          <MenuItem title="Login" />
+          <MenuItem title="Home" to="/" />
+          <MenuItem title="Blog" to="/" />
+          <MenuItem title="Sign Up" to="/" />
+          <MenuItem title="Login" to="/" />
         </Grid>
         <Grid
           item
