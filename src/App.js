@@ -4,8 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ThemeSwitcher from "./components/commons/ThemeSwitcher";
 import ModeState from "./context/modeState";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    if (!localStorage.getItem("mode")) {
+      localStorage.setItem("mode", "light");
+    }
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className="App">
       <ModeState>
