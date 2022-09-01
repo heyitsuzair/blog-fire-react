@@ -16,6 +16,11 @@ body {
   background-color: var(--bg-color-gray);
   color: var(--color-body);
 }
+.dark {
+  --color-white: #1a1a1a;
+  --color-gray: #ffffff;
+  --bg-color-gray: #242424;
+}
 /* header component */
 .header {
   background-color: var(--color-white);
@@ -48,6 +53,10 @@ body {
   border: none;
   background-color: var(--bg-color-gray);
   outline: none;
+  color: var(--color-gray);
+}
+.search {
+  color: var(--color-gray);
 }
 .header-icons.menu {
   display: none;
@@ -94,6 +103,47 @@ body {
   font-family: "Poppins";
   font-weight: 600;
   text-decoration: none;
+}
+/* Theme Switcher */
+.theme-switcher {
+  display: flex;
+  position: fixed;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  z-index: 1035;
+  transform: rotate(90deg);
+  justify-content: center;
+  align-items: flex-start;
+}
+.mid {
+  border-right: 2px solid var(--color-primary);
+}
+.switch-light,
+.switch-dark {
+  color: var(--color-primary);
+  font-family: "Poppins";
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.switch-dark {
+  padding: 0.4rem 1.2rem;
+  font-size: 15px;
+  border: 2px solid var(--color-primary);
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.switch-light {
+  padding: 0.4rem 1.2rem;
+  font-size: 15px;
+  border: 2px solid var(--color-primary);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.switch-active {
+  background-color: var(--color-primary);
+  color: white;
 }
 /* Media Queries */
 

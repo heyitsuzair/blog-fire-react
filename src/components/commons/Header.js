@@ -1,14 +1,25 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import logo from "../../assets/img/logo-black.webp";
+import logo_black from "../../assets/img/logo-black.webp";
+import logo_white from "../../assets/img/logo-white.webp";
 import MenuItem from "./MenuItem";
 import HeaderRight from "./HeaderRight";
+import { useContext } from "react";
+import modeContext from "../../context/modeContext";
 export default function Header() {
+  // using the mode context to check whether mode is light or dark and according to criteria switching the brand image
+  const mode_context = useContext(modeContext);
+  const { mode } = mode_context;
+
   return (
     <div className="header">
       <Grid container>
         <Grid item md={2} xs={4} sm={10}>
-          <img src={logo} alt="Loading..." className="brand" />
+          <img
+            src={mode === "light" ? logo_black : logo_white}
+            alt="Loading..."
+            className="brand"
+          />
         </Grid>
         <Grid
           item
