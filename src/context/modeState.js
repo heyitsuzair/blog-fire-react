@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import modeContext from "./modeContext";
 
 export default function ModeState({ children }) {
-  const [mode, setMode] = useState(localStorage.getItem("mode"));
+  const [mode, setMode] = useState();
   const handleChange = (e, mode) => {
     if (mode === "dark") {
       setMode("dark");
@@ -18,7 +18,8 @@ export default function ModeState({ children }) {
   };
   useEffect(() => {
     // set the default theme mode got from localStorage mode item
-    document.body.classList.add(mode);
+    setMode(localStorage.getItem("mode"));
+    document.body.classList.add(localStorage.getItem("mode"));
     //eslint-disable-next-line
   }, []);
 
