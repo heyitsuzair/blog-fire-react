@@ -282,8 +282,11 @@ body {
   padding: 35px 30px;
   border-radius: var(--radius);
 }
-.card .category {
+.card .category span {
   color: var(--color-secondary);
+}
+.card .category span:hover {
+  color: var(--color-primary);
 }
 .card .author {
   display: flex;
