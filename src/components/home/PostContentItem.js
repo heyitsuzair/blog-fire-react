@@ -20,7 +20,7 @@ export default function PostContentItem() {
             </div>
             <div className="content">
               <h2>
-                <a href="/" className="article">
+                <a href="/" className="article hover-line">
                   {blog.desc}
                 </a>
               </h2>

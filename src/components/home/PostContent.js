@@ -13,7 +13,7 @@ export default function PostContent() {
         <Grid item md={5} xs={12} sm={12} order={{ sm: 1, xs: 1, md: 0 }}>
           <Arrows />
         </Grid>
-        <Grid item md={6} xs={12} sm={12}>
+        <Grid item md={6} xs={12} sm={12} className="hero-post">
           <PostContentItem />
         </Grid>
       </Grid>
