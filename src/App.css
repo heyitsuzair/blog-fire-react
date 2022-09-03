@@ -14,9 +14,11 @@
   --shadow-dark: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   --shadow-light: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
   --radius: 10px;
+  --radius-small: 6px;
   --color-heading: #000;
   --color-extra01: #666;
   --color-lighter: #ced0d4;
+  --p-bold: 700;
 }
 body {
   font-family: "Poppins";
@@ -336,6 +338,26 @@ body {
   background-color: var(--color-white);
   cursor: pointer;
   border-radius: var(--radius);
+}
+/* Tabs Component */
+.tabs {
+  display: flex;
+  gap: 2rem;
+}
+.tabs .tab-item {
+  border: 1px solid var(--color-lighter);
+  border-radius: var(--radius-small);
+  color: var(--color-midgray);
+  background-color: var(--bg-color-gray);
+  font-weight: var(--p-bold);
+  padding: 0.5rem 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+.tabs .tab-item.active {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-dark);
 }
 /* Media Queries */
 
