@@ -19,6 +19,7 @@
   --color-extra01: #666;
   --color-lighter: #ced0d4;
   --p-bold: 700;
+  --color-lightest: #f0f2f5;
 }
 body {
   font-family: "Poppins";
@@ -31,6 +32,7 @@ body {
   --bg-color-gray: #242424;
   --color-heading: #fff;
   --color-lighter: #1a1a1a;
+  --color-lightest: #212121;
 }
 /* Global */
 .hover-line {
@@ -311,18 +313,7 @@ body {
   width: 70%;
 }
 .card .card-img-parent {
-  box-sizing: border-box;
-  display: inline-block;
   overflow: hidden;
-  width: initial;
-  height: initial;
-  background: none;
-  opacity: 1;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  max-width: 100%;
   border-radius: 50%;
   height: 97%;
 }
@@ -358,6 +349,43 @@ body {
 .tabs .tab-item.active {
   background-color: var(--color-white);
   box-shadow: var(--shadow-dark);
+}
+/* Innovation Component */
+.innovation {
+  background-color: var(--color-white);
+  padding: 3rem 0;
+}
+/* Vertical Card Component */
+.vertical-card {
+  margin: 2rem 0;
+  align-items: center;
+  background-color: var(--color-lightest);
+  padding-top: 2rem;
+  border-radius: var(--radius);
+  padding-bottom: 0;
+}
+.vertical-card .category {
+  color: var(--color-secondary);
+}
+.vertical-card .category:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.vertical-card .desc {
+  color: var(--color-white);
+  text-align: center;
+}
+.vertical-card .card-img-parent {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.vertical-card .card-img {
+  object-fit: cover;
+  transition: 0.5s all;
+  border-radius: 50%;
+}
+.vertical-card .card-img:hover {
+  transform: scale(1.1);
 }
 /* Media Queries */
 
