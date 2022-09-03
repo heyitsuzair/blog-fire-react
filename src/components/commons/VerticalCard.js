@@ -61,8 +61,6 @@ export default function Card() {
             <Link to="/">
               <img
                 src={img2}
-                width={250}
-                height={250}
                 alt="Loading..."
                 className="card-img"
                 ref={imgRef}

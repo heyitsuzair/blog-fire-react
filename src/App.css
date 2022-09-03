@@ -21,11 +21,16 @@
   --p-bold: 700;
   --color-lightest: #f0f2f5;
   --bg-color-white: #fff;
+  --s-bold: 700;
+  --h5-size: 18px;
 }
+
 body {
   font-family: "Poppins";
   background-color: var(--bg-color-gray);
   color: var(--color-body);
+  margin: 0;
+  padding: 0;
 }
 .dark {
   --color-white: #050505;
@@ -317,12 +322,15 @@ body {
 .card .card-img-parent {
   overflow: hidden;
   border-radius: 50%;
-  height: 97%;
+  width: 200px;
+  height: 200px;
 }
 .card .card-img {
   border-radius: 50%;
   object-fit: cover;
   transition: 0.5s all;
+  width: 200px;
+  height: 200px;
 }
 .card .card-img:hover {
   transform: scale(1.1);
@@ -363,9 +371,8 @@ body {
   margin: 2rem 0;
   align-items: center;
   background-color: var(--color-lightest);
-  padding-top: 2rem;
+  padding: 2rem 0;
   border-radius: var(--radius);
-  padding-bottom: 0;
 }
 .vertical-card .category {
   color: var(--color-secondary);
@@ -381,17 +388,69 @@ body {
 .vertical-card .card-img-parent {
   overflow: hidden;
   border-radius: 50%;
+  width: 250px;
+  height: 250px;
 }
 .vertical-card .card-img {
   object-fit: cover;
   transition: 0.5s all;
   border-radius: 50%;
+  width: 250px;
+  height: 250px;
 }
 .vertical-card .card-img:hover {
   transform: scale(1.1);
 }
+/* Trending Topics Component */
+.trending-topics {
+  background-color: var(--bg-color-gray);
+  padding: 3rem 0;
+}
+/* Topic Component */
+.topic {
+  text-align: center;
+  border-radius: var(--radius);
+  position: relative;
+}
+.topic .img {
+  overflow: hidden;
+  border-radius: var(--radius);
+  width: 180px;
+  height: 180px;
+}
+.topic .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.topic h5 {
+  color: var(--color-heading);
+  font-weight: var(--s-bold);
+  font-size: var(--h5-size);
+  opacity: 1;
+  margin-top: 1rem;
+}
+.topic .img img {
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: 0.5s all;
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(180deg, transparent, #000);
+  opacity: 0.7;
+}
+.topic .img img:hover {
+  transform: scale(1.1);
+}
 /* Media Queries */
-
+@media (max-width: 991px) {
+  .section-heading {
+    text-align: center;
+  }
+  .topic .inner {
+    align-items: center;
+  }
+}
 @media (max-width: 768px) {
   .header .brand {
     width: 150px;
@@ -413,5 +472,18 @@ body {
   }
   .arrow-icons {
     margin: 1rem 0;
+  }
+  .card .info {
+    gap: 0.4rem;
+  }
+}
+@media (max-width: 446px) {
+  .topic .img {
+    width: 150px;
+    height: 150px;
+  }
+  .topic .img img {
+    width: 150px;
+    height: 150px;
   }
 }
