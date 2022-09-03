@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { Grid } from "@mui/material";
-import img from "../../assets/img/author.webp";
 import img2 from "../../assets/img/thumbnail-01.webp";
 import { Link } from "react-router-dom";
 

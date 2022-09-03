@@ -20,6 +20,7 @@
   --color-lighter: #ced0d4;
   --p-bold: 700;
   --color-lightest: #f0f2f5;
+  --bg-color-white: #fff;
 }
 body {
   font-family: "Poppins";
@@ -27,12 +28,13 @@ body {
   color: var(--color-body);
 }
 .dark {
-  --color-white: #1a1a1a;
+  --color-white: #050505;
   --color-gray: #ffffff;
   --bg-color-gray: #242424;
   --color-heading: #fff;
-  --color-lighter: #1a1a1a;
+  --color-lighter: #050505;
   --color-lightest: #212121;
+  --bg-color-white: #1a1a1a;
 }
 /* Global */
 .hover-line {
@@ -339,7 +341,7 @@ body {
   border: 1px solid var(--color-lighter);
   border-radius: var(--radius-small);
   color: var(--color-midgray);
-  background-color: var(--bg-color-gray);
+  background-color: transparent;
   font-weight: var(--p-bold);
   padding: 0.5rem 0;
   cursor: pointer;
@@ -349,10 +351,11 @@ body {
 .tabs .tab-item.active {
   background-color: var(--color-white);
   box-shadow: var(--shadow-dark);
+  border: none;
 }
 /* Innovation Component */
 .innovation {
-  background-color: var(--color-white);
+  background-color: var(--bg-color-white);
   padding: 3rem 0;
 }
 /* Vertical Card Component */
