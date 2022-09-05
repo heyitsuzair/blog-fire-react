@@ -69,7 +69,7 @@ export default function Social() {
           </Grid>
           <Grid item lg={2} md={4} sm={4} xs={6}>
             <a
-              href="stackoverflow.com/users/17360435/muhammad-uzair"
+              href="//stackoverflow.com/users/17360435/muhammad-uzair"
               target="_blank"
               rel="noreferrer"
             >
