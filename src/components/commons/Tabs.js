@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
 
-export default function Tabs() {
+export default function Tabs({ tabs }) {
   const [active, setActive] = useState(0);
-  const tabs = ["Gadget", "Design", "Marketing", "Technology"];
 
   // handle when clicked on tab and set active tab index
   const handleTabClick = (index) => {
