@@ -34,12 +34,12 @@ export default function PostListView() {
         onMouseLeave={() => handleMouseLeave()}
         columnSpacing={{ md: 2, sm: 2 }}
       >
-        <Grid item lg={5} md={6} sm={4} xs={12}>
+        <Grid item lg={5} md={6} sm={6} xs={12}>
           <div className="img-parent">
             <img src={img} alt="Loading..." className="img" ref={imgRef} />
           </div>
         </Grid>
-        <Grid item lg={7} md={6} sm={8} xs={12}>
+        <Grid item lg={7} md={6} sm={6} xs={12}>
           <div className="post-list-card" ref={cardRef}>
             <div className="category">
               <span>Design</span>

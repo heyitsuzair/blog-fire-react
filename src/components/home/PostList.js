@@ -1,6 +1,7 @@
 import React from "react";
 import PostListView from "../commons/PostListView";
 import { Grid, Container } from "@mui/material";
+import Sidebar from "../commons/Sidebar";
 
 export default function PostList() {
   return (
@@ -13,7 +14,7 @@ export default function PostList() {
             <PostListView />
           </Grid>
           <Grid item lg={4} md={12} sm={12} xs={12}>
-            hello
+            <Sidebar />
           </Grid>
         </Grid>
       </Container>
