@@ -599,6 +599,10 @@ body {
     gap: 1.5rem;
     margin-top: 1rem;
   }
+  .horizontal-tab .right .img.active {
+    width: 80%;
+    height: 80%;
+  }
 }
 @media (max-width: 1024px) {
   .horizontal-tab {
