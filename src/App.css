@@ -23,6 +23,12 @@
   --bg-color-white: #fff;
   --s-bold: 700;
   --h5-size: 18px;
+  --color-twitter: #1ba1f2;
+  --color-fb: #3b5997;
+  --color-linkedin: #0077b5;
+  --color-insta: #c231a1;
+  --color-github: black;
+  --color-stack: hsl(27, 90%, 55%);
 }
 body {
   font-family: "Poppins";
@@ -524,7 +530,76 @@ body {
   opacity: 1;
   transform: scale(1.1);
 }
+/* Social Component */
+.social {
+  padding: 4rem 5rem;
+}
+.social a {
+  text-decoration: none;
+}
+.social .container {
+  background-color: var(--bg-color-white);
+  padding: 35px 50px;
+  border-radius: var(--radius);
+}
+.social .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-gray);
+  font-weight: 600;
+  font-size: 13px;
+}
+.social .icon:hover {
+  cursor: pointer;
+}
+.social .icon svg {
+  background-color: var(--color-lightest);
+  color: #878787;
+  padding: 0.7rem 0.7rem;
+  border-radius: 50%;
+  transition: 0.3s all;
+}
+.social .icon.twitter:hover svg {
+  color: white;
+  background-color: var(--color-twitter);
+  cursor: pointer;
+}
+.social .icon.fb:hover svg {
+  color: white;
+  background-color: var(--color-fb);
+  cursor: pointer;
+}
+.social .icon.insta:hover svg {
+  color: white;
+  background-color: var(--color-insta);
+  cursor: pointer;
+}
+.social .icon.linkedin:hover svg {
+  color: white;
+  background-color: var(--color-linkedin);
+  cursor: pointer;
+}
+.social .icon.github:hover svg {
+  color: white;
+  background-color: var(--color-github);
+  cursor: pointer;
+}
+.social .icon.stack:hover svg {
+  color: white;
+  background-color: var(--color-stack);
+  cursor: pointer;
+}
 /* Media Queries */
+@media (max-width: 1199px) {
+  .social .icon {
+    justify-content: space-between;
+    margin-right: 10rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+}
 @media (max-width: 1024px) {
   .horizontal-tab {
     flex-direction: column;
@@ -575,7 +650,23 @@ body {
   .card .info {
     gap: 0.4rem;
   }
+  .social .icon {
+    gap: 1.5rem;
+    font-size: 12px;
+    margin-left: 0.5rem;
+  }
+  .social .container {
+    padding: 35px 15px;
+  }
+  .social .icon svg {
+    padding: 0.7rem 0.7rem;
+    font-size: 15px;
+  }
+  .social {
+    padding: 4rem 1rem;
+  }
 }
+
 @media (max-width: 446px) {
   .topic .img {
     width: 150px;
