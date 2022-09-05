@@ -14,11 +14,7 @@ export default function HorizontalTab({
   };
 
   return (
-    <div
-      className="horizontal-tab"
-      onMouseEnter={() => handleMouseEnter()}
-      //   onMouseLeave={() => handleMouseLeave()}
-    >
+    <div className="horizontal-tab" onMouseEnter={() => handleMouseEnter()}>
       <div
         className="left hover-line-primary"
         style={{ backgroundSize: index === activeTab ? "100% 2px" : "" }}
