@@ -57,6 +57,20 @@ body {
 .hover-line:hover {
   background-size: 100% 2px;
 }
+.hover-line-primary {
+  text-decoration: none;
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(90deg, #3858f6 0, #3858f6);
+  background-size: 0 2px;
+  background-position: 0 95%;
+  transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+  padding: 0.1% 0;
+  background-repeat: no-repeat;
+}
+.hover-line-primary:hover {
+  background-size: 100% 2px;
+}
 .section-heading {
   color: var(--color-heading);
   margin-bottom: 2rem;
@@ -447,7 +461,79 @@ body {
   background-color: var(--bg-color-white);
   padding: 3rem 0;
 }
+/* Horizontal Tab Component */
+.horizontal-tab {
+  display: flex;
+  gap: 3rem;
+  padding-bottom: 1rem;
+}
+.horizontal-tab .left {
+  display: flex;
+  gap: 2rem;
+  flex: 0 0 70%;
+}
+.horizontal-tab .right {
+  flex: 0 0 30%;
+}
+.horizontal-tab .number {
+  color: var(--color-heading);
+}
+.horizontal-tab .info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.horizontal-tab .info .category {
+  color: var(--color-secondary);
+}
+.horizontal-tab .info .category:hover {
+  color: var(--color-primary);
+}
+.horizontal-tab .info h3 {
+  color: var(--color-heading);
+  font-weight: var(--s-bold);
+}
+.horizontal-tab .author-info .name {
+  color: var(--color-heading);
+}
+.horizontal-tab .author-info .info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--color-extra01);
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+.horizontal-tab .right .img {
+  opacity: 0;
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: 0.5s all;
+}
+.horizontal-tab .right .img.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
 /* Media Queries */
+@media (max-width: 1024px) {
+  .horizontal-tab {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  .horizontal-tab .left {
+    flex: 0 0 100%;
+  }
+  .horizontal-tab .right {
+    flex: 0 0 100%;
+    text-align: center;
+  }
+  .horizontal-tab .right .img.active {
+    width: 90%;
+    height: 90%;
+  }
+}
 @media (max-width: 991px) {
   .section-heading {
     text-align: center;
