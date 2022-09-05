@@ -24,7 +24,6 @@
   --s-bold: 700;
   --h5-size: 18px;
 }
-
 body {
   font-family: "Poppins";
   background-color: var(--bg-color-gray);
@@ -40,6 +39,15 @@ body {
   --color-lighter: #050505;
   --color-lightest: #212121;
   --bg-color-white: #1a1a1a;
+}
+/* Scrollbar Code */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--color-primary);
 }
 /* Global */
 .hover-line {
