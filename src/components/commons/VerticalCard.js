@@ -49,11 +49,11 @@ export default function Card() {
             <span>Design</span>
           </div>
           <div className="desc">
-            <h2>
+            <h3 className="card-h3">
               <Link to="/" className="hover-line" ref={lineRef}>
                 Lorem ipsum dolor sit, amet ...
               </Link>
-            </h2>
+            </h3>
           </div>
         </Grid>
         <Grid item xs={12} md={12} sm={12}>

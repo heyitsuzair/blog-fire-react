@@ -22,6 +22,7 @@ export default function Innovation() {
               index={0}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              desc="Hello my name is uzair and i am a senior developer"
             />
           </Grid>
           <Grid item md={12}>
@@ -29,6 +30,7 @@ export default function Innovation() {
               index={1}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              desc="Hello my name is uzair and i am a senior developer"
             />
           </Grid>
           <Grid item md={12}>
@@ -36,6 +38,7 @@ export default function Innovation() {
               index={2}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              desc="Hello my name is uzair and i am a senior developer"
             />
           </Grid>
         </Grid>

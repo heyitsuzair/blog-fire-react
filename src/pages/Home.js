@@ -5,6 +5,7 @@ import Innovation from "../components/home/Innovation";
 import TrendingTopics from "../components/home/TrendingTopics";
 import MostPopular from "../components/home/MostPopular";
 import Social from "../components/home/Social";
+import PostList from "../components/home/PostList";
 export default function Home() {
   return (
     <div className="home">
@@ -14,6 +15,7 @@ export default function Home() {
       <TrendingTopics />
       <MostPopular />
       <Social />
+      <PostList />
     </div>
   );
 }

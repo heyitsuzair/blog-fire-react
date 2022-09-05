@@ -18,11 +18,11 @@ export default function Tabs({ tabs }) {
             xs={3.5}
             sm={2}
             md={1.2}
+            key={index}
             className="tabs"
             justifyContent="center"
           >
             <div
-              key={index}
               className={`tab-item ${index === active ? "active" : ""}`}
               onClick={() => handleTabClick(index)}
             >

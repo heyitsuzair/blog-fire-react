@@ -31,7 +31,7 @@ export default function PostContentItem() {
                       <img src={img} alt="Author" />
                     </div>
                     <div className="info-parent">
-                      <div className="name">{blog.by}</div>
+                      <div className="author-name">{blog.by}</div>
                       <div className="info">
                         <span className="date">Feb 30 2022 </span>
                         <span className="dot"></span>

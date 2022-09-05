@@ -58,7 +58,7 @@ export default function Card() {
           <div className="author">
             <img src={img} alt="Author" />
             <div className="author-info">
-              <span className="name">John Doe</span>
+              <span className="author-name">John Doe</span>
               <div className="info">
                 <span className="date">Feb 10 2022 </span>
                 <span className="dot"></span>
