@@ -6,6 +6,7 @@ import ThemeSwitcher from "./components/commons/ThemeSwitcher";
 import ModeState from "./context/modeState";
 import BlogState from "./context/blogState";
 import { useEffect } from "react";
+import Footer from "./components/commons/Footer";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
             </Routes>
+            <Footer />
           </Router>
         </BlogState>
       </ModeState>
