@@ -65,12 +65,6 @@ export default function Sidebar() {
             </Grid>
           </div>
         </Grid>
-        <Grid item className="sidebar-item" lg={12} md={12} sm={12} xs={12}>
-          <h3>Instagram</h3>
-          <Grid item lg={4}>
-            <InstagramItem />
-          </Grid>
-        </Grid>
       </Grid>
     </div>
   );
