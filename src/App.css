@@ -359,6 +359,10 @@ body {
   background-color: var(--color-white);
   cursor: pointer;
   border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+}
+.card-active .card {
+  border: 1px solid transparent;
 }
 /* Tabs Component */
 .tabs {
