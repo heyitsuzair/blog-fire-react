@@ -631,6 +631,14 @@ body {
 .sidebar-post .sidebar-post-item .img-parent .img.active {
   transform: scale(1.1);
 }
+.sidebar-item .social {
+  padding: 0;
+  display: flex;
+}
+.sidebar-item .social .icon {
+  margin: 0;
+  justify-content: center;
+}
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {
