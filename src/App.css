@@ -698,33 +698,43 @@ body {
 /* Dashboard Sidebar */
 .dashboard .sidebar {
   background-color: var(--bg-color-white);
-  height: 100vh;
+  height: 97vh;
   margin: 0;
-  flex: 0 0 20%;
   padding: 2rem 2rem;
+  transition: 0.5s all;
+  padding-bottom: 0;
 }
-.dashboard .sidebar .menu-item-db:hover a {
-  margin-left: 5px;
+.dashboard .sidebar.open {
+  flex: 0 0 20%;
+  transition: 0.5s all;
+}
+.dashboard .sidebar.close {
+  flex: 0 0 0%;
+  transition: 0.5s all;
 }
 .dashboard .sidebar .menu-item-db {
   padding: 0.7rem 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.dashboard .sidebar .menu-item-db.active {
+.dashboard .sidebar .menu.active {
   background-color: var(--color-primary);
   border-radius: 4px;
   box-shadow: 0 0 10px 1px var(--color-primary);
 }
-.dashboard .sidebar .menu-item-db.active a {
+.dashboard .sidebar .active a {
   color: white;
 }
-.dashboard .sidebar .menu-item-db a {
+.dashboard .sidebar a {
   color: var(--color-heading);
   text-decoration: none;
-  transition: 0.2s all;
-  display: flex;
-  gap: 0.5rem;
 }
+.dashboard .sidebar .menu-item-db.collapse {
+  justify-content: flex-end;
+}
+
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

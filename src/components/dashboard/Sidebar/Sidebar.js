@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Grid } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { Dashboard, Book } from "@mui/icons-material";
+import { Dashboard, Book, Add, ArrowBack, Menu } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import userContext from "../../../context/userContext";
 export default function Sidebar() {
   // use the following context to logout the user when someone clickes on logout menu item
   const user_context = useContext(userContext);
   const { Logout } = user_context;
+
+  // state for collapse toggle
+  const [open, setOpen] = useState(window.innerWidth < 768 ? false : true);
 
   // use the following location to get the current pathname and than match it too paths array of objects containing "to". If the "to" and "pathname" match, make the menu item active
   const location = useLocation();
@@ -22,32 +25,54 @@ export default function Sidebar() {
       icon: <Book />,
       text: "Blogs",
     },
+    {
+      to: "/dashboard/addBlog",
+      icon: <Add />,
+      text: "Add Blog",
+    },
+    {
+      to: "/",
+      icon: <ArrowBack />,
+      text: "Bloggar",
+    },
   ];
 
+  const handleCollapse = () => {
+    open === true ? setOpen(false) : setOpen(true);
+  };
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${open === true ? "open" : "close"}`}>
       <Grid container flexDirection="column" gap={3}>
+        <Grid
+          item
+          lg={12}
+          className="menu-item-db collapse"
+          onClick={() => handleCollapse()}
+        >
+          <Link to={location.pathname}>
+            <Menu />
+          </Link>
+        </Grid>
         {paths.map((path, index) => {
           return (
-            <Grid
-              key={index}
-              item
-              lg={12}
-              className={`menu-item-db ${
+            <Link
+              to={path.to}
+              className={`menu ${
                 location.pathname === path.to ? "active" : ""
               }`}
             >
-              <Link to={path.to}>
-                {path.icon} {path.text}
-              </Link>
-            </Grid>
+              <Grid key={index} item lg={12} className="menu-item-db">
+                {path.icon} {open === true ? path.text : ""}
+              </Grid>
+            </Link>
           );
         })}
-        <Grid item lg={12} className="menu-item-db">
-          <Link to="/" onClick={() => Logout()}>
-            <LogoutIcon /> Logout
-          </Link>
-        </Grid>
+        <Link to="/" onClick={() => Logout()}>
+          <Grid item lg={12} className="menu-item-db logout active">
+            <LogoutIcon /> {open === true ? "Logout" : ""}
+          </Grid>
+        </Link>
       </Grid>
     </div>
   );
