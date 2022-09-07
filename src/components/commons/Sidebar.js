@@ -1,10 +1,8 @@
-import React from "react";
-import { Grid } from "@mui/material";
-import Search from "./Search";
-import SidebarPost from "./SidebarPost";
-import { LinkedIn, Facebook, Twitter, GitHub } from "@mui/icons-material";
-import InstagramItem from "./InstagramItem";
-
+import React from "react"
+import { Grid } from "@mui/material"
+import Search from "./Search"
+import SidebarPost from "./SidebarPost"
+import { LinkedIn, Facebook, Twitter, GitHub } from "@mui/icons-material"
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -67,5 +65,5 @@ export default function Sidebar() {
         </Grid>
       </Grid>
     </div>
-  );
+  )
 }

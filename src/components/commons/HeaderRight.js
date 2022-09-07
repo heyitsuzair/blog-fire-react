@@ -1,8 +1,8 @@
 import React from "react";
 import { Bookmark } from "@mui/icons-material";
-import img from "../../assets/img/author.webp";
 import Drawer from "./Drawer";
 import SearchComponent from "./Search";
+import Popover from "./Popover";
 export default function HeaderRight() {
   return (
     <>
@@ -10,9 +10,7 @@ export default function HeaderRight() {
       <div className="header-icons">
         <Bookmark />
       </div>
-      <div className="profile-pic">
-        <img src={img} alt="Profile" />
-      </div>
+      <Popover />
       <Drawer />
     </>
   );

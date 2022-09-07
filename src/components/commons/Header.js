@@ -32,8 +32,8 @@ export default function Header() {
         >
           <MenuItem title="Home" to="/" />
           <MenuItem title="Blog" to="/" />
-          <MenuItem title="Sign Up" to="/" />
-          <MenuItem title="Login" to="/" />
+          <MenuItem title="Sign Up" to="/auth" />
+          <MenuItem title="Login" to="/auth" />
         </Grid>
         <Grid
           item

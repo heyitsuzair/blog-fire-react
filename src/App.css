@@ -48,6 +48,10 @@ body {
   --bg-color-white: #1a1a1a;
   --color-black-light: #181818;
 }
+/* Toast */
+.toast-custom {
+  font-family: "Poppins" !important;
+}
 /* Scrollbar Code */
 ::-webkit-scrollbar {
   width: 7px;
@@ -184,7 +188,6 @@ body {
   align-items: center;
 }
 .profile-pic img {
-  padding: 0.5rem 0.5rem;
   border-radius: 50px;
   width: 60%;
 }
@@ -663,6 +666,15 @@ body {
 }
 .footer .social-parent h3 {
   color: var(--color-heading);
+}
+/* Popover Component */
+#basic-menu .MuiMenu-list {
+  background-color: var(--bg-color-white) !important;
+  color: var(--color-gray);
+  border-radius: none !important;
+}
+#basic-menu .MuiMenuItem-root {
+  font-family: "Poppins" !important;
 }
 /* Media Queries */
 @media (max-width: 1199px) {
