@@ -690,6 +690,41 @@ body {
 #basic-menu .MuiMenuItem-root {
   font-family: "Poppins" !important;
 }
+/* Dashboard Page */
+.dashboard {
+  display: flex;
+  gap: 1rem;
+}
+/* Dashboard Sidebar */
+.dashboard .sidebar {
+  background-color: var(--bg-color-white);
+  height: 100vh;
+  margin: 0;
+  flex: 0 0 20%;
+  padding: 2rem 2rem;
+}
+.dashboard .sidebar .menu-item-db:hover a {
+  margin-left: 5px;
+}
+.dashboard .sidebar .menu-item-db {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+.dashboard .sidebar .menu-item-db.active {
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 10px 1px var(--color-primary);
+}
+.dashboard .sidebar .menu-item-db.active a {
+  color: white;
+}
+.dashboard .sidebar .menu-item-db a {
+  color: var(--color-heading);
+  text-decoration: none;
+  transition: 0.2s all;
+  display: flex;
+  gap: 0.5rem;
+}
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

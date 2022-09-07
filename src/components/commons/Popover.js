@@ -59,8 +59,20 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <Link
+          className="td-none"
+          style={{ color: "var(--color-gray)" }}
+          to="/dashboard"
+        >
+          <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+        </Link>
+        <Link
+          className="td-none"
+          style={{ color: "var(--color-gray)" }}
+          to="/dashboard/settings"
+        >
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+        </Link>
         <MenuItem
           onClick={() => {
             handleClose();

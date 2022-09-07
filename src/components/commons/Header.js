@@ -6,10 +6,18 @@ import MenuItem from "./MenuItem";
 import HeaderRight from "./HeaderRight";
 import { useContext } from "react";
 import modeContext from "../../context/modeContext";
+import userContext from "../../context/userContext";
 export default function Header() {
   // using the mode context to check whether mode is light or dark and according to criteria switching the brand image
   const mode_context = useContext(modeContext);
   const { mode } = mode_context;
+
+  // use the following state to check whether user is logged in or not and according to condition show the "My Account" in menu
+  const user_context = useContext(userContext);
+  const { user } = user_context;
+
+  // use the following localStorage to check whether user is logged in or not and according to condition show the "My Account" in menu
+  const getUser = localStorage.getItem("blog-user");
 
   return (
     <div className="header">
@@ -33,6 +41,11 @@ export default function Header() {
         >
           <MenuItem title="Home" to="/" />
           <MenuItem title="Blogs" to="/" />
+          {getUser !== null || user !== null ? (
+            <MenuItem title="My Account" to="/dashboard" />
+          ) : (
+            ""
+          )}
         </Grid>
         <Grid
           item
