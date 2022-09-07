@@ -42,7 +42,7 @@ export default function LoginFb() {
 
   return (
     <FacebookLogin
-      appId="1435552993612624"
+      appId={process.env.REACT_APP_FB_APP_ID}
       fields="name,email,picture"
       callback={responseFacebook}
       cssClass="login-with-fb"
