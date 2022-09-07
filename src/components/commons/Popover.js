@@ -2,6 +2,8 @@ import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import userContext from "../../context/userContext";
+import { Link } from "react-router-dom";
+import { AccountCircle } from "@mui/icons-material";
 
 export default function BasicMenu() {
   // purpose:Logout the user when clicked on logout
@@ -23,7 +25,18 @@ export default function BasicMenu() {
   return (
     <div className="popover">
       {getUser === null ? (
-        ""
+        <Link to="/auth">
+          <div
+            className="profile-pic"
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <AccountCircle />
+          </div>
+        </Link>
       ) : (
         <div
           className="profile-pic"

@@ -186,6 +186,20 @@ body {
 .profile-pic {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.profile-pic svg {
+  padding: 0.3rem 0.3rem;
+  background: var(--bg-color-gray);
+  border-radius: 50%;
+  color: var(--color-gray);
+}
+.profile-pic svg:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.profile-pic:hover {
+  cursor: pointer;
 }
 .profile-pic img {
   border-radius: 50px;

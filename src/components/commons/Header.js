@@ -26,14 +26,13 @@ export default function Header() {
           md={6}
           sm={8}
           display={window.innerWidth < 768 ? "none" : "flex"}
-          justifyContent="space-evenly"
+          justifyContent="center"
           alignItems="center"
           className="hidden"
+          gap={2}
         >
           <MenuItem title="Home" to="/" />
-          <MenuItem title="Blog" to="/" />
-          <MenuItem title="Sign Up" to="/auth" />
-          <MenuItem title="Login" to="/auth" />
+          <MenuItem title="Blogs" to="/" />
         </Grid>
         <Grid
           item

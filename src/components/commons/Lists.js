@@ -1,7 +1,7 @@
-import * as React from "react"
-import List from "@mui/material/List"
-import ListItemButton from "@mui/material/ListItemButton"
-import { Link } from "react-router-dom"
+import * as React from "react";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import { Link } from "react-router-dom";
 
 export default function NestedList() {
   return (
@@ -21,16 +21,6 @@ export default function NestedList() {
           Blog
         </Link>
       </ListItemButton>
-      <ListItemButton>
-        <Link to="/auth" className="list-item">
-          Login
-        </Link>
-      </ListItemButton>
-      <ListItemButton>
-        <Link to="/auth" className="list-item">
-          Signup
-        </Link>
-      </ListItemButton>
     </List>
-  )
+  );
 }
