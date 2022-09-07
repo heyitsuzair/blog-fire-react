@@ -37,6 +37,7 @@ body {
   color: var(--color-body);
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .dark {
   --color-white: #1a1a1a;
@@ -706,11 +707,9 @@ body {
 }
 .dashboard .sidebar.open {
   flex: 0 0 20%;
-  transition: 0.5s all;
 }
 .dashboard .sidebar.close {
   flex: 0 0 0%;
-  transition: 0.5s all;
 }
 .dashboard .sidebar .menu-item-db {
   padding: 0.7rem 1rem;
@@ -724,7 +723,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 10px 1px var(--color-primary);
 }
-.dashboard .sidebar .active a {
+.dashboard .sidebar .menu.active {
   color: white;
 }
 .dashboard .sidebar a {
@@ -735,6 +734,27 @@ body {
   justify-content: flex-end;
 }
 
+/* MainDashboard View */
+.main-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+/* BreadCrumb Component */
+.breadcrumb {
+  background-color: var(--bg-color-white);
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  color: var(--color-heading);
+  gap: 1rem;
+  box-shadow: var(--shadow-light);
+}
+.breadcrumb .active {
+  color: var(--color-primary);
+}
+/* .breadcrumb */
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

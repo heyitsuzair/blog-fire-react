@@ -1,16 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Grid } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { Dashboard, Book, Add, ArrowBack, Menu } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import userContext from "../../../context/userContext";
-export default function Sidebar() {
-  // use the following context to logout the user when someone clickes on logout menu item
+export default function Sidebar({ open, setOpen }) {
+  // use the following context to logout the user when someone clicks on logout menu item
   const user_context = useContext(userContext);
   const { Logout } = user_context;
-
-  // state for collapse toggle
-  const [open, setOpen] = useState(window.innerWidth < 768 ? false : true);
 
   // use the following location to get the current pathname and than match it too paths array of objects containing "to". If the "to" and "pathname" match, make the menu item active
   const location = useLocation();

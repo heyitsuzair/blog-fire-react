@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar/Sidebar";
 import MainDashboard from "../views/MainDashboard";
@@ -10,6 +10,9 @@ export default function Dashboard() {
   const { user } = user_context;
   const getUser = localStorage.getItem("blog-user");
 
+  // state for collapse toggle
+  const [open, setOpen] = useState(window.innerWidth < 768 ? false : true);
+
   useEffect(() => {
     //check if user is logged in or not and if the user is not logged in, navigate it to index
     if (getUser === null && user === null) {
@@ -20,11 +23,16 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<MainDashboard />} />
-        <Route path="/blogs" element={<Blogs />} />
-      </Routes>
+      <Sidebar open={open} setOpen={setOpen} />
+      <div
+        className="dashboard-sec"
+        style={{ flex: `0 0 ${open === true ? "73%" : "88%"}` }}
+      >
+        <Routes>
+          <Route path="/" element={<MainDashboard />} />
+          <Route path="/blogs" element={<Blogs />} />
+        </Routes>
+      </div>
     </div>
   );
 }
