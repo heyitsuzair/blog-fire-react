@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Grid, Button } from "@mui/material";
+import { Grid } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import Header from "./Header";
 import TextFieldComponent from "../../commons/TextField";
 import MultipleSelect from "../../commons/MultipleSelect";
@@ -9,6 +10,10 @@ import blogFormContext from "../../../context/blogFormContext";
 import { Add, Update } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../firebase-config";
+
 export default function BlogForm({ setProgress }) {
   // use the following location to check whether it is add blog or update blog page
   const location = useLocation();
@@ -21,13 +26,16 @@ export default function BlogForm({ setProgress }) {
   const categories = ["Design", "Technology", "SEO"];
   const status = ["Published", "Pending", "Draft"];
 
+  // loading button state
+  const [loading, setLoading] = React.useState(false);
+
   // on change form values
   const handleOnChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   // handle when clicked on add button
-  const handleAddClick = () => {
+  const handleAddClick = async () => {
     if (formValues.title === null) {
       toast.error("Please Enter The Title!");
       return;
@@ -50,6 +58,45 @@ export default function BlogForm({ setProgress }) {
       toast.error("Please Upload Featured Image!");
       return;
     }
+    setLoading(true);
+    // logged in user info
+    const user = JSON.parse(localStorage.getItem("blog-user"));
+
+    const formData = new FormData();
+    setProgress(30);
+
+    formData.append("file", formValues.image);
+    formData.append("upload_preset", "xgkxvbud");
+
+    // uploading image to cloudinary
+    await axios
+      .post("https://api.cloudinary.com/v1_1/digaxe3sc/image/upload", formData)
+      .then(async (res) => {
+        setProgress(70);
+        // Add a new document to forebase.
+        await addDoc(collection(db, "blogs"), {
+          category: formValues.category,
+          content: formValues.content,
+          email: user.email,
+          image: res.data.secure_url,
+          slug: formValues.slug,
+          status: formValues.status,
+          title: formValues.title,
+        });
+        // changing progress to 100%
+        setProgress(100);
+        toast.success("Blog Added!");
+        setLoading(false);
+        //setting form value back to initial
+        setFormValues({
+          title: null,
+          slug: null,
+          category: [],
+          status: null,
+          content: null,
+          image: null,
+        });
+      });
   };
 
   return (
@@ -108,22 +155,24 @@ export default function BlogForm({ setProgress }) {
         </Grid>
         <Grid item lg={12} sm={12} xs={12} md={12} marginTop={2}>
           {location.pathname === "/dashboard/addBlog" ? (
-            <Button
+            <LoadingButton
               variant="contained"
               className="blog-form-submit"
+              loading={loading}
               endIcon={<Add />}
               onClick={() => handleAddClick()}
             >
               Add
-            </Button>
+            </LoadingButton>
           ) : (
-            <Button
+            <LoadingButton
               variant="contained"
               className="blog-form-submit"
+              loading={loading}
               endIcon={<Update />}
             >
               Update
-            </Button>
+            </LoadingButton>
           )}
         </Grid>
       </Grid>
