@@ -5,12 +5,20 @@ const useStyles = makeStyles({
   root: {
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "var(--color-primary) !important",
+        borderColor: "#878787 !important",
+      },
+      "&.Mui-focused": {
+        "& fieldset": {
+          borderColor: "var(--color-primary) !important",
+        },
       },
     },
     "& .MuiFormLabel-root": {
-      color: "var(--color-primary) !important",
+      color: "#878787 !important",
       fontFamily: "Poppins",
+      "&.Mui-focused": {
+        color: "var(--color-primary) !important",
+      },
     },
     "& .MuiOutlinedInput-input": {
       color: "var(--color-heading) !important",

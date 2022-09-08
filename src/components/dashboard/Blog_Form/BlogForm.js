@@ -4,6 +4,9 @@ import Header from "./Header";
 import TextFieldComponent from "../../commons/TextField";
 import MultipleSelect from "../../commons/MultipleSelect";
 export default function BlogForm() {
+  const categories = ["Design", "Technology", "SEO"];
+  const status = ["Published", "Pending", "Draft"];
+
   return (
     <div className="blog-form">
       <Grid container>
@@ -16,7 +19,17 @@ export default function BlogForm() {
           <TextFieldComponent label="Title" />
         </Grid>
         <Grid item lg={6} sm={6} xs={6} md={6}>
-          <MultipleSelect label="Category" />
+          <MultipleSelect
+            label="Category"
+            multiSelect={true}
+            values={categories}
+          />
+        </Grid>
+        <Grid item lg={6} sm={6} xs={6} md={6} marginTop={2}>
+          <TextFieldComponent label="Slug" />
+        </Grid>
+        <Grid item lg={6} sm={6} xs={6} md={6} marginTop={2}>
+          <MultipleSelect label="Status" multiSelect={false} values={status} />
         </Grid>
       </Grid>
     </div>

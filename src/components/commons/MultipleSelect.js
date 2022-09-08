@@ -23,15 +23,26 @@ const useStyles = makeStyles({
       color: "var(--color-heading) !important",
       fontFamily: "Poppins !important",
     },
+    "& svg": {
+      color: "var(--color-heading) !important",
+    },
   },
   input: {
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "var(--color-primary) !important",
+      borderColor: "#878787 !important",
+    },
+    "&.Mui-focused": {
+      "& .MuiOutlinedInput-notchedOutline": {
+        borderColor: "var(--color-primary) !important",
+      },
     },
   },
   label: {
     top: "-0.5rem !important",
-    color: "var(--color-primary) !important",
+    color: "#878787 !important",
+    "&.Mui-focused": {
+      color: "var(--color-primary) !important",
+    },
   },
   li: {
     backgroundColor: "var(--bg-color-white) !important",
@@ -44,8 +55,6 @@ const useStyles = makeStyles({
   },
 });
 
-const names = ["Design", "Technology", "SEO"];
-
 function getStyles(name, catName, theme) {
   return {
     fontWeight:
@@ -55,7 +64,7 @@ function getStyles(name, catName, theme) {
   };
 }
 
-export default function MultipleSelect({ label }) {
+export default function MultipleSelect({ label, values, multiSelect }) {
   const classes = useStyles();
   const theme = useTheme();
   const [catName, setCatName] = React.useState([]);
@@ -79,7 +88,7 @@ export default function MultipleSelect({ label }) {
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
-          multiple
+          multiple={multiSelect}
           fullWidth
           value={catName}
           onChange={handleChange}
@@ -89,14 +98,14 @@ export default function MultipleSelect({ label }) {
           MenuProps={MenuProps}
           className={classes.select}
         >
-          {names.map((name) => (
+          {values.map((value) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, catName, theme)}
+              key={value}
+              value={value}
+              style={getStyles(value, catName, theme)}
               className={classes.li}
             >
-              {name}
+              {value}
             </MenuItem>
           ))}
         </Select>
