@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import TextFieldComponent from "../../commons/TextField";
 export default function header() {
   // get logged in user info
   const getUser = JSON.parse(localStorage.getItem("blog-user"));
@@ -35,14 +34,6 @@ export default function header() {
               " " +
               d.getFullYear()}
           </span>
-        </Grid>
-      </Grid>
-      <Grid container marginTop={2} columnSpacing={2}>
-        <Grid item lg={6}>
-          <TextFieldComponent label="Title" />
-        </Grid>
-        <Grid item lg={6}>
-          <TextFieldComponent label="Category" />
         </Grid>
       </Grid>
     </div>
