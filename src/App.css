@@ -772,7 +772,33 @@ body {
   color: var(--color-midgray);
   font-size: 13px;
 }
+/* Text Editor Component */
+.jodit-status-bar {
+  display: none !important;
+}
+.jodit-container {
+  max-width: 98.5% !important;
+}
+.jodit-toolbar-editor-collection {
+  background-color: var(--bg-color-gray);
+}
+.jodit-toolbar-button .jodit-icon {
+  stroke: var(--color-heading);
+  fill: var(--color-heading);
+}
+.jodit-wysiwyg p {
+  color: var(--color-heading);
+}
 
+.jodit-toolbar-editor-collection_mode_vertical .jodit-toolbar-button__button {
+  color: var(--color-heading) !important;
+}
+.jodit-toolbar-editor-collection .jodit-toolbar-button {
+  margin: 0.5 !important;
+}
+.jodit-toolbar-button__trigger svg {
+  fill: var(--color-heading);
+}
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

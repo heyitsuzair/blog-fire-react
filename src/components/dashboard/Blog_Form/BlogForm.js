@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import Header from "./Header";
 import TextFieldComponent from "../../commons/TextField";
 import MultipleSelect from "../../commons/MultipleSelect";
+import TextEditor from "./TextEditor";
 export default function BlogForm() {
   const categories = ["Design", "Technology", "SEO"];
   const status = ["Published", "Pending", "Draft"];
@@ -30,6 +31,9 @@ export default function BlogForm() {
         </Grid>
         <Grid item lg={6} sm={6} xs={6} md={6} marginTop={2}>
           <MultipleSelect label="Status" multiSelect={false} values={status} />
+        </Grid>
+        <Grid item lg={12} sm={12} xs={12} md={12} marginTop={2}>
+          <TextEditor />
         </Grid>
       </Grid>
     </div>

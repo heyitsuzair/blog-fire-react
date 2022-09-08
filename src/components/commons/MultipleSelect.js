@@ -19,7 +19,7 @@ const MenuProps = {
 const useStyles = makeStyles({
   select: {
     "& .MuiSelect-outlined": {
-      padding: "0.5rem 0.8rem",
+      padding: "0.6rem 0.8rem",
       color: "var(--color-heading) !important",
       fontFamily: "Poppins !important",
     },

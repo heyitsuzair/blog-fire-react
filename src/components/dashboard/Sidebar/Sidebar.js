@@ -54,12 +54,13 @@ export default function Sidebar({ open, setOpen }) {
         {paths.map((path, index) => {
           return (
             <Link
+              key={index}
               to={path.to}
               className={`menu ${
                 location.pathname === path.to ? "active" : ""
               }`}
             >
-              <Grid key={index} item lg={12} className="menu-item-db">
+              <Grid item lg={12} className="menu-item-db">
                 {path.icon} {open === true ? path.text : ""}
               </Grid>
             </Link>
