@@ -64,7 +64,13 @@ function getStyles(name, catName, theme) {
   };
 }
 
-export default function MultipleSelect({ label, values, multiSelect }) {
+export default function MultipleSelect({
+  label,
+  values,
+  value,
+  multiSelect,
+  onChange,
+}) {
   const classes = useStyles();
   const theme = useTheme();
   const [catName, setCatName] = React.useState([]);
@@ -77,6 +83,7 @@ export default function MultipleSelect({ label, values, multiSelect }) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    onChange(event);
   };
 
   return (
@@ -97,6 +104,7 @@ export default function MultipleSelect({ label, values, multiSelect }) {
           }
           MenuProps={MenuProps}
           className={classes.select}
+          name={label.toLowerCase()}
         >
           {values.map((value) => (
             <MenuItem

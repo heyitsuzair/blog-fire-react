@@ -1,9 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
-export default function FeaturedImg() {
-  // preview source image
-  const [previewSource, setPreviewSource] = useState("");
-
+export default function FeaturedImg({ onChange, value }) {
   // use the following ref to trigger file input when someone clicks on upload image button
   const fileRef = useRef();
 
@@ -17,7 +14,13 @@ export default function FeaturedImg() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setPreviewSource(reader.result);
+      // creating custom object for blog form context
+      onChange({
+        target: {
+          name: e.target.name,
+          value: reader.result,
+        },
+      });
     };
   };
 
@@ -25,10 +28,10 @@ export default function FeaturedImg() {
     <div className="featuredImg">
       <h3>Featured Image</h3>
       <div className="content">
-        {previewSource === "" ? (
+        {value === null ? (
           <div className="image-preview">Image Preview</div>
         ) : (
-          <img src={previewSource} alt="Loading..." />
+          <img src={value} alt="Loading..." />
         )}
         <div>
           <p>Image Size Must Not Be More Than 10 MB</p>
@@ -37,7 +40,7 @@ export default function FeaturedImg() {
             type="file"
             onChange={(e) => handleOnChange(e)}
             hidden
-            name="file"
+            name="image"
             ref={fileRef}
           />
         </div>

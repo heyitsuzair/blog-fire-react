@@ -771,6 +771,9 @@ body {
   color: var(--color-midgray);
   font-size: 13px;
 }
+.blog-form .blog-form-submit {
+  background-color: var(--color-primary) !important;
+}
 /* Text Editor Component */
 .jodit-status-bar {
   display: none !important;

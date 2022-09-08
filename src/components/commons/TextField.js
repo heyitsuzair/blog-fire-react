@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
   },
 });
-export default function TextFieldComponent({ label, value }) {
+export default function TextFieldComponent({ label, values, onChange }) {
   const classes = useStyles();
 
   return (
@@ -33,8 +33,10 @@ export default function TextFieldComponent({ label, value }) {
       <TextField
         label={label}
         id="outlined-size-small"
-        defaultValue={value}
+        defaultValue={values}
+        onChange={(e) => onChange(e)}
         size="small"
+        name={label.toLowerCase()}
         required
         className={classes.root}
         fullWidth
