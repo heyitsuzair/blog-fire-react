@@ -5,11 +5,14 @@ import MainDashboard from "../views/MainDashboard";
 import Blogs from "../views/Blogs";
 import userContext from "../context/userContext";
 import AddBlog from "../views/AddBlog";
+import LoadingBar from "react-top-loading-bar";
 export default function Dashboard() {
   const navigate = useNavigate();
   const user_context = useContext(userContext);
   const { user } = user_context;
   const getUser = localStorage.getItem("blog-user");
+
+  const [progress, setProgress] = useState(0);
 
   // state for collapse toggle
   const [open, setOpen] = useState(window.innerWidth < 768 ? false : true);
@@ -25,6 +28,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <Sidebar open={open} setOpen={setOpen} />
+      <LoadingBar color="var(--color-primary)" progress={progress} height={3} />
       <div
         className="dashboard-sec"
         style={{ flex: `0 0 ${open === true ? "73%" : "88%"}` }}
@@ -32,7 +36,7 @@ export default function Dashboard() {
         <Routes>
           <Route path="/" element={<MainDashboard />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/addBlog" element={<AddBlog />} />
+          <Route path="/addBlog" element={<AddBlog setProgress={setProgress} />} />
         </Routes>
       </div>
     </div>

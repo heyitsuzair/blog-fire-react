@@ -9,7 +9,7 @@ import blogFormContext from "../../../context/blogFormContext";
 import { Add, Update } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-export default function BlogForm() {
+export default function BlogForm({ setProgress }) {
   // use the following location to check whether it is add blog or update blog page
   const location = useLocation();
 
@@ -100,7 +100,11 @@ export default function BlogForm() {
           />
         </Grid>
         <Grid item lg={11.8} sm={12} xs={12} md={12} marginTop={2}>
-          <FeaturedImg onChange={handleOnChange} value={formValues.image} />
+          <FeaturedImg
+            onChange={handleOnChange}
+            value={formValues.image}
+            setProgress={setProgress}
+          />
         </Grid>
         <Grid item lg={12} sm={12} xs={12} md={12} marginTop={2}>
           {location.pathname === "/dashboard/addBlog" ? (

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
 
-export default function FeaturedImg({ onChange, value }) {
+export default function FeaturedImg({ onChange, value, setProgress }) {
   // use the following ref to trigger file input when someone clicks on upload image button
   const fileRef = useRef();
 
@@ -22,8 +22,10 @@ export default function FeaturedImg({ onChange, value }) {
       toast.warning("Image Size Must Be Below 5 MB!");
       return;
     }
+    setProgress(30);
     const reader = new FileReader();
     reader.readAsDataURL(file);
+    setProgress(60);
     reader.onloadend = () => {
       // creating custom object for blog form context
       onChange({
@@ -32,6 +34,7 @@ export default function FeaturedImg({ onChange, value }) {
           value: reader.result,
         },
       });
+      setProgress(100);
     };
   };
 
