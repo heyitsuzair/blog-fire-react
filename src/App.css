@@ -699,7 +699,6 @@ body {
 /* Dashboard Sidebar */
 .dashboard .sidebar {
   background-color: var(--bg-color-white);
-  height: 97vh;
   margin: 0;
   padding: 2rem 2rem;
   transition: 0.5s all;
@@ -789,7 +788,6 @@ body {
 .jodit-wysiwyg p {
   color: var(--color-heading);
 }
-
 .jodit-toolbar-editor-collection_mode_vertical .jodit-toolbar-button__button {
   color: var(--color-heading) !important;
 }
@@ -798,6 +796,52 @@ body {
 }
 .jodit-toolbar-button__trigger svg {
   fill: var(--color-heading);
+}
+/* Featured Image Component */
+.featuredImg {
+  padding: 1rem 1rem;
+  border: 2px solid var(--color-lighter);
+  border-radius: var(--radius-small);
+}
+.featuredImg h3 {
+  color: var(--color-heading);
+  font-weight: 600;
+}
+.featuredImg img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  margin: 1rem 0;
+  border-radius: var(--radius-small);
+}
+.featuredImg .image-preview {
+  width: 150px;
+  height: 100px;
+  margin: 1rem 0;
+  border-radius: var(--radius-small);
+  color: var(--color-gray);
+  border: 1px solid #878787;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.featuredImg p {
+  color: var(--color-gray);
+}
+.featuredImg .content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.featuredImg button {
+  padding: 0.7rem 0.7rem;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-small);
+  margin-top: 0.5rem;
+  color: white;
+  font-family: "Poppins";
+  cursor: pointer;
 }
 /* Media Queries */
 @media (max-width: 1199px) {

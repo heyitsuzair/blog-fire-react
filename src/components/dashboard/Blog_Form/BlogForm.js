@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Header from "./Header";
 import TextFieldComponent from "../../commons/TextField";
 import MultipleSelect from "../../commons/MultipleSelect";
 import TextEditor from "./TextEditor";
+import FeaturedImg from "./FeaturedImg";
 export default function BlogForm() {
+  // const [formValues,setFormValues]=useState({})
+
+  // multiple select values
   const categories = ["Design", "Technology", "SEO"];
   const status = ["Published", "Pending", "Draft"];
 
@@ -34,6 +38,9 @@ export default function BlogForm() {
         </Grid>
         <Grid item lg={12} sm={12} xs={12} md={12} marginTop={2}>
           <TextEditor />
+        </Grid>
+        <Grid item lg={11.8} sm={12} xs={12} md={12} marginTop={2}>
+          <FeaturedImg />
         </Grid>
       </Grid>
     </div>
