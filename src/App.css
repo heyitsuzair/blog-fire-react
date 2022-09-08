@@ -754,7 +754,25 @@ body {
 .breadcrumb .active {
   color: var(--color-primary);
 }
-/* .breadcrumb */
+/* Blog Form Component */
+.blog-form {
+  background-color: var(--bg-color-white);
+  border-radius: 5px;
+  padding: 1rem 1rem;
+}
+/* Blog Form Header */
+.blog-form .form-header img {
+  border-radius: 50%;
+}
+.blog-form .form-header h4 {
+  color: var(--color-heading);
+  font-weight: 600;
+}
+.blog-form .form-header span {
+  color: var(--color-midgray);
+  font-size: 13px;
+}
+
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

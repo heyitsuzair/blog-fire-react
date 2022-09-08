@@ -4,6 +4,7 @@ import Sidebar from "../components/dashboard/Sidebar/Sidebar";
 import MainDashboard from "../views/MainDashboard";
 import Blogs from "../views/Blogs";
 import userContext from "../context/userContext";
+import AddBlog from "../views/AddBlog";
 export default function Dashboard() {
   const navigate = useNavigate();
   const user_context = useContext(userContext);
@@ -31,6 +32,7 @@ export default function Dashboard() {
         <Routes>
           <Route path="/" element={<MainDashboard />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/addBlog" element={<AddBlog />} />
         </Routes>
       </div>
     </div>
