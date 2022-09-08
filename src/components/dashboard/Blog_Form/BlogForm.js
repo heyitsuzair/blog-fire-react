@@ -8,6 +8,7 @@ import FeaturedImg from "./FeaturedImg";
 import blogFormContext from "../../../context/blogFormContext";
 import { Add, Update } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 export default function BlogForm() {
   // use the following location to check whether it is add blog or update blog page
   const location = useLocation();
@@ -20,8 +21,35 @@ export default function BlogForm() {
   const categories = ["Design", "Technology", "SEO"];
   const status = ["Published", "Pending", "Draft"];
 
+  // on change form values
   const handleOnChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  // handle when clicked on add button
+  const handleAddClick = () => {
+    if (formValues.title === null) {
+      toast.error("Please Enter The Title!");
+      return;
+    } else if (formValues.category.length < 1) {
+      toast.error("Please Select The Category!");
+      return;
+    } else if (formValues.slug === null) {
+      toast.error("Please Enter The Slug!");
+      return;
+    } else if (formValues.status === null) {
+      toast.error("Please Select The Status!");
+      return;
+    } else if (
+      formValues.content === null ||
+      formValues.content === "<p><br></p>"
+    ) {
+      toast.error("Content Cannot Be Empty!");
+      return;
+    } else if (formValues.image === null) {
+      toast.error("Please Upload Featured Image!");
+      return;
+    }
   };
 
   return (
@@ -80,6 +108,7 @@ export default function BlogForm() {
               variant="contained"
               className="blog-form-submit"
               endIcon={<Add />}
+              onClick={() => handleAddClick()}
             >
               Add
             </Button>
