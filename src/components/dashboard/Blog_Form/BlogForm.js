@@ -82,6 +82,7 @@ export default function BlogForm({ setProgress }) {
           slug: formValues.slug,
           status: formValues.status,
           title: formValues.title,
+          views: parseInt(0),
         });
         // changing progress to 100%
         setProgress(100);

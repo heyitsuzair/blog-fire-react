@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import blogContext from "./blogContext";
 import image from "../assets/img/thumbnail-01.webp";
 import image2 from "../assets/img/thumbnail-02.webp";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../firebase-config";
+import { toast } from "react-toastify";
 
 export default function BlogState({ children }) {
   // reference to blogs collection
@@ -43,13 +51,41 @@ export default function BlogState({ children }) {
 
     // doc.data() is never undefined for query doc snapshots
     setUserBlogs(
-      blogsSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      blogsSnapshot.docs.map((doc, index) => ({
+        ...doc.data(),
+        id: doc.id,
+        index: index + 1,
+      }))
     );
+  };
+
+  const deleteBlog = async (id) => {
+    // filtering blog that is deleted
+    const filteredBlogs = userBlogs.filter((blog) => {
+      return blog.id !== id;
+    });
+    // settings new blogs after deleting one blog
+    setUserBlogs(filteredBlogs);
+    try {
+      // deleting document from blogs collection
+      await deleteDoc(doc(db, "blogs", id));
+      toast.success("Blog Deleted!");
+    } catch (error) {
+      toast.error("Something Went Wrong!");
+      return;
+    }
   };
 
   return (
     <blogContext.Provider
-      value={{ blogs, active, setActive, LoggedInUserBlogs, userBlogs }}
+      value={{
+        blogs,
+        active,
+        setActive,
+        LoggedInUserBlogs,
+        userBlogs,
+        deleteBlog,
+      }}
     >
       {children}
     </blogContext.Provider>

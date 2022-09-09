@@ -36,7 +36,7 @@ export default function Dashboard() {
       >
         <Routes>
           <Route path="/" element={<MainDashboard />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<Blogs setProgress={setProgress} />} />
           <Route
             path="/addBlog"
             element={<AddBlog setProgress={setProgress} />}
