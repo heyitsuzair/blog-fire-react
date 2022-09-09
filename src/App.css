@@ -703,6 +703,7 @@ body {
   padding: 2rem 2rem;
   transition: 0.5s all;
   padding-bottom: 0;
+  height: 130vh;
 }
 .dashboard .sidebar.open {
   flex: 0 0 20%;
@@ -848,6 +849,12 @@ body {
   color: white;
   font-family: "Poppins";
   cursor: pointer;
+}
+/* Dashboard Tables Class*/
+.dashboard-table {
+  background-color: var(--bg-color-white);
+  border-radius: 5px;
+  padding: 1rem 1rem;
 }
 /* Media Queries */
 @media (max-width: 1199px) {
