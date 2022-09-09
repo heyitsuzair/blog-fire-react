@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
+import { useRef } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -71,6 +71,7 @@ export default function MultipleSelect({
   multiSelect,
   onChange,
 }) {
+  const selectRef = useRef();
   const classes = useStyles();
   const theme = useTheme();
   const [catName, setCatName] = React.useState([]);
@@ -91,20 +92,19 @@ export default function MultipleSelect({
       <FormControl sx={{ m: 1, width: "95%" }}>
         <span className="form-spans">{label}</span>
         <Select
-          labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
-          multiple={multiSelect}
           fullWidth
-          value={catName}
+          multiple={multiSelect}
+          value={value}
           onChange={handleChange}
           input={<OutlinedInput fullWidth className={classes.input} />}
           MenuProps={MenuProps}
           className={classes.select}
           name={label.toLowerCase()}
+          ref={selectRef}
         >
-          {values.map((value) => (
+          {values.map((value, index) => (
             <MenuItem
-              key={value}
+              key={index}
               value={value}
               style={getStyles(value, catName, theme)}
               className={classes.li}

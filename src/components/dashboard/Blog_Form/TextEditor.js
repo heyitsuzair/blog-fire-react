@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import JoditEditor from "jodit-react";
 
-export default function TextEditor({ label, onChange }) {
+export default function TextEditor({ label, onChange, value }) {
   const editor = useRef(null);
-  const [content, setContent] = useState("");
 
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/
@@ -12,11 +11,10 @@ export default function TextEditor({ label, onChange }) {
   return (
     <JoditEditor
       ref={editor}
-      value={content}
+      value={value}
       config={config}
       tabIndex={1} // tabIndex of textarea
       onBlur={(newContent) => {
-        setContent(newContent);
         // making object to send to form blog context
         onChange({
           target: {

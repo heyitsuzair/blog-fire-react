@@ -33,13 +33,13 @@ export default function TextFieldComponent({ label, value, onChange }) {
       <span className="form-spans">{label}</span>
       <TextField
         id="outlined-size-small"
-        defaultValue={value}
         onChange={(e) => onChange(e)}
         size="small"
         name={label.toLowerCase()}
         required
         className={classes.root}
         fullWidth
+        value={value}
       />
     </div>
   );

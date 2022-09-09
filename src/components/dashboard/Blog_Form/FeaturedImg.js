@@ -42,7 +42,7 @@ export default function FeaturedImg({ onChange, value, setProgress }) {
     <div className="featuredImg">
       <h3>Featured Image</h3>
       <div className="content">
-        {value === null ? (
+        {value === "" ? (
           <div className="image-preview">Image Preview</div>
         ) : (
           <img src={value} alt="Loading..." />

@@ -89,13 +89,18 @@ export default function BlogForm({ setProgress }) {
         setLoading(false);
         //setting form value back to initial
         setFormValues({
-          title: null,
-          slug: null,
+          title: "",
+          slug: "",
           category: [],
-          status: null,
-          content: null,
-          image: null,
+          status: "",
+          content: "",
+          image: "",
         });
+      })
+      .catch((res) => {
+        setLoading(false);
+        setProgress(100);
+        toast.error("Something Went Wrong Please Try Again!");
       });
   };
 

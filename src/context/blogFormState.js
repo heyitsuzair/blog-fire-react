@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import blogFormContext from "./blogFormContext";
 export default function BlogState({ children }) {
   const [formValues, setFormValues] = useState({
-    title: null,
-    slug: null,
+    title: "",
+    slug: "",
     category: [],
-    status: null,
-    content: null,
-    image: null,
+    status: "",
+    content: "",
+    image: "",
   });
   return (
     <blogFormContext.Provider value={{ formValues, setFormValues }}>
