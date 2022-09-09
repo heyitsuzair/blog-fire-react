@@ -66,13 +66,6 @@ export default function BasicMenu() {
         >
           <MenuItem onClick={handleClose}>Dashboard</MenuItem>
         </Link>
-        <Link
-          className="td-none"
-          style={{ color: "var(--color-gray)" }}
-          to="/dashboard/settings"
-        >
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-        </Link>
         <MenuItem
           onClick={() => {
             handleClose();

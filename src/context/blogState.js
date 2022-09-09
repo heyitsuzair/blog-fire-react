@@ -20,9 +20,6 @@ export default function BlogState({ children }) {
   // reference to blogs collection
   const blogsRef = collection(db, "blogs");
 
-  // logged in user info
-  const getUser = JSON.parse(localStorage.getItem("blog-user"));
-
   // active state for hero slider
   const [active, setActive] = useState(0);
 
@@ -46,11 +43,11 @@ export default function BlogState({ children }) {
     },
   ]);
 
-  const LoggedInUserBlogs = async () => {
+  const LoggedInUserBlogs = async (email) => {
     // Create a query against the collection and fetch the documents where "email" == "logged in user email"
     const blogsOfLoggedIn = query(
       blogsRef,
-      where("email", "==", doc(db, `users/` + getUser.email)),
+      where("email", "==", doc(db, `users/` + email)),
       orderBy("views", "desc")
     );
     // executing query

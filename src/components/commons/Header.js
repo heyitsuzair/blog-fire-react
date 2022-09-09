@@ -42,7 +42,7 @@ export default function Header() {
           <MenuItem title="Home" to="/" />
           <MenuItem title="Blogs" to="/" />
           {getUser !== null || user !== null ? (
-            <MenuItem title="My Account" to="/dashboard" />
+            <MenuItem title="Dashboard" to="/dashboard" />
           ) : (
             ""
           )}

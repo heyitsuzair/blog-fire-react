@@ -11,6 +11,9 @@ export default function Blogs({ setProgress }) {
   const blog_context = useContext(blogContext);
   const { LoggedInUserBlogs, userBlogs, deleteBlog } = blog_context;
 
+  // get logged in user info
+  const getUser = JSON.parse(localStorage.getItem("blog-user"));
+
   //rows for table
   const [rows, setRows] = useState([]);
   const columns = [
@@ -80,15 +83,15 @@ export default function Blogs({ setProgress }) {
   ];
 
   useEffect(() => {
-    LoggedInUserBlogs();
+    LoggedInUserBlogs(getUser.email);
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     setProgress(0);
     setProgress(30);
-    // getting all blogs through prop available in db and adding it to table rows
     setProgress(60);
+    // getting all blogs through prop available in db and adding it to table rows
     setRows(userBlogs);
     setProgress(100);
     // eslint-disable-next-line
