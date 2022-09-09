@@ -130,19 +130,36 @@ const rows = [
     image: "image",
     category: "category",
   },
+  {
+    id: 10,
+    title: "title",
+    slug: "slug",
+    status: "status",
+    image: "image",
+    category: "category",
+  },
+  {
+    id: 11,
+    title: "title",
+    slug: "slug",
+    status: "status",
+    image: "image",
+    category: "category",
+  },
 ];
 
 export default function DataTable() {
   const classes = useStyles();
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 645, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
+        pageSize={10}
         disableSelectionOnClick
         className={classes.root}
+        rowsPerPageOptions={[10]}
       />
     </div>
   );
