@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { addDoc, collection, doc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import blogContext from "../../../context/blogContext";
 
 export default function BlogForm({ setProgress }) {
   // use the following location to check whether it is add blog or update blog page
@@ -21,6 +22,10 @@ export default function BlogForm({ setProgress }) {
   // form values context
   const form_context = useContext(blogFormContext);
   const { setFormValues, formValues } = form_context;
+
+  // Blog Main Context For CRUD
+  const blog_context = useContext(blogContext);
+  const { addBlog } = blog_context;
 
   // multiple select values
   const categories = ["Design", "Technology", "SEO"];
@@ -36,34 +41,37 @@ export default function BlogForm({ setProgress }) {
 
   // handle when clicked on add button
   const handleAddClick = async () => {
-    if (formValues.title === null) {
+    // validations to check if anything is null
+    if (formValues.title === "") {
       toast.error("Please Enter The Title!");
       return;
     } else if (formValues.category.length < 1) {
       toast.error("Please Select The Category!");
       return;
-    } else if (formValues.slug === null) {
+    } else if (formValues.slug === "") {
       toast.error("Please Enter The Slug!");
       return;
-    } else if (formValues.status === null) {
+    } else if (formValues.status === "") {
       toast.error("Please Select The Status!");
       return;
     } else if (
-      formValues.content === null ||
+      formValues.content === "" ||
       formValues.content === "<p><br></p>"
     ) {
       toast.error("Content Cannot Be Empty!");
       return;
-    } else if (formValues.image === null) {
+    } else if (formValues.image === "") {
       toast.error("Please Upload Featured Image!");
       return;
     }
     setLoading(true);
     // logged in user info
     const user = JSON.parse(localStorage.getItem("blog-user"));
-
+    setProgress(0);
     const formData = new FormData();
     setProgress(30);
+
+    // appending "upload_preset" and "file" for cloudinary upload
 
     formData.append("file", formValues.image);
     formData.append("upload_preset", "xgkxvbud");
@@ -73,30 +81,20 @@ export default function BlogForm({ setProgress }) {
       .post("https://api.cloudinary.com/v1_1/digaxe3sc/image/upload", formData)
       .then(async (res) => {
         setProgress(70);
-        // Add a new document to forebase.
-        await addDoc(collection(db, "blogs"), {
-          category: formValues.category,
-          content: formValues.content,
-          email: doc(db, `users/` + user.email),
-          image: res.data.secure_url,
-          slug: formValues.slug,
-          status: formValues.status,
-          title: formValues.title,
-          views: parseInt(0),
-        });
+        // Add a new document to firebase using "addBlog" funtion available in "blogState"
+        addBlog(
+          formValues.category,
+          formValues.content,
+          user.email,
+          res.data.secure_url,
+          formValues.slug,
+          formValues.status,
+          formValues.title,
+          setFormValues
+        );
         // changing progress to 100%
         setProgress(100);
-        toast.success("Blog Added!");
         setLoading(false);
-        //setting form value back to initial
-        setFormValues({
-          title: "",
-          slug: "",
-          category: [],
-          status: "",
-          content: "",
-          image: "",
-        });
       })
       .catch((res) => {
         setLoading(false);

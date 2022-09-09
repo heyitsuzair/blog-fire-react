@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { toast } from "react-toastify";
+import { addDoc } from "firebase/firestore";
 
 export default function BlogState({ children }) {
   // reference to blogs collection
@@ -44,10 +45,13 @@ export default function BlogState({ children }) {
   ]);
 
   const LoggedInUserBlogs = async () => {
-    // Create a query against the collection.
-    const blogsIncoming = query(blogsRef, where("email", "==", getUser.email));
+    // Create a query against the collection and fetch the documents where "email" == "logged in user email"
+    const blogsOfLoggedIn = query(
+      blogsRef,
+      where("email", "==", doc(db, `users/` + getUser.email))
+    );
     // executing query
-    const blogsSnapshot = await getDocs(blogsIncoming);
+    const blogsSnapshot = await getDocs(blogsOfLoggedIn);
 
     // doc.data() is never undefined for query doc snapshots
     setUserBlogs(
@@ -76,6 +80,60 @@ export default function BlogState({ children }) {
     }
   };
 
+  const addBlog = async (
+    cat,
+    content,
+    email,
+    image,
+    slug,
+    status,
+    title,
+    setFormValues
+  ) => {
+    // Create a query against the collection and check whether the slug is already in database or not
+    const slugCheckQuery = query(blogsRef, where("slug", "==", slug));
+    // executing query
+    const slugCheckSnapshot = await getDocs(slugCheckQuery);
+    console.log(slugCheckSnapshot.docs);
+    if (slugCheckSnapshot.docs.length > 0) {
+      toast.error("A Blog With This Slug Already Exists!");
+      return;
+    } else {
+      // adding document to firebase
+      await addDoc(collection(db, "blogs"), {
+        category: cat,
+        content: content,
+        email: doc(db, `users/` + email),
+        image: image,
+        slug: slug,
+        status: status,
+        title: title,
+        views: parseInt(0),
+      });
+      //setting form value back to initial
+      setFormValues({
+        title: "",
+        slug: "",
+        category: [],
+        status: "",
+        content: "",
+        image: "",
+      });
+      toast.success("Blog Added!");
+      return false;
+    }
+  };
+
+  const updateBlog = async (
+    cat,
+    content,
+    email,
+    image,
+    slug,
+    status,
+    title
+  ) => {};
+
   return (
     <blogContext.Provider
       value={{
@@ -85,6 +143,7 @@ export default function BlogState({ children }) {
         LoggedInUserBlogs,
         userBlogs,
         deleteBlog,
+        addBlog,
       }}
     >
       {children}

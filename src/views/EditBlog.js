@@ -39,7 +39,7 @@ export default function EditBlog({ setProgress }) {
         image: incomingData.image,
       });
     } else {
-      toast.error("Something Went Wrong!");
+      toast.error("Something Went Wrong.Please Try Again!");
     }
     setProgress(100);
   };
