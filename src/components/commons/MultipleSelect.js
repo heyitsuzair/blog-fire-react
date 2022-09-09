@@ -89,9 +89,7 @@ export default function MultipleSelect({
   return (
     <div className="multi-select">
       <FormControl sx={{ m: 1, width: "95%" }}>
-        <InputLabel className={classes.label} id="demo-multiple-name-label">
-          {label}
-        </InputLabel>
+        <span className="form-spans">{label}</span>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
@@ -99,9 +97,7 @@ export default function MultipleSelect({
           fullWidth
           value={catName}
           onChange={handleChange}
-          input={
-            <OutlinedInput fullWidth className={classes.input} label={label} />
-          }
+          input={<OutlinedInput fullWidth className={classes.input} />}
           MenuProps={MenuProps}
           className={classes.select}
           name={label.toLowerCase()}

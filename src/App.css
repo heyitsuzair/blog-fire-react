@@ -759,6 +759,9 @@ body {
   border-radius: 5px;
   padding: 1rem 1rem;
 }
+.form-spans {
+  color: var(--color-heading);
+}
 /* Blog Form Header */
 .blog-form .form-header img {
   border-radius: 50%;

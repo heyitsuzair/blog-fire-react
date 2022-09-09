@@ -30,10 +30,10 @@ export default function TextFieldComponent({ label, value, onChange }) {
 
   return (
     <div className="text-field">
+      <span className="form-spans">{label}</span>
       <TextField
-        label={label}
         id="outlined-size-small"
-        defaultValue={value === null ? "" : value}
+        defaultValue={value}
         onChange={(e) => onChange(e)}
         size="small"
         name={label.toLowerCase()}
