@@ -10,6 +10,7 @@ import {
   doc,
   deleteDoc,
   setDoc,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { toast } from "react-toastify";
@@ -49,7 +50,8 @@ export default function BlogState({ children }) {
     // Create a query against the collection and fetch the documents where "email" == "logged in user email"
     const blogsOfLoggedIn = query(
       blogsRef,
-      where("email", "==", doc(db, `users/` + getUser.email))
+      where("email", "==", doc(db, `users/` + getUser.email)),
+      orderBy("views", "desc")
     );
     // executing query
     const blogsSnapshot = await getDocs(blogsOfLoggedIn);
