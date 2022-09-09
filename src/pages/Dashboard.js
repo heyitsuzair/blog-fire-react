@@ -21,6 +21,7 @@ export default function Dashboard() {
     //check if user is logged in or not and if the user is not logged in, navigate it to index
     if (getUser === null && user === null) {
       navigate("/");
+      return;
     }
     //eslint-disable-next-line
   }, []);
