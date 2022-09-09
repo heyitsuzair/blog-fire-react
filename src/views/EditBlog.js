@@ -13,19 +13,25 @@ export default function EditBlog({ setProgress }) {
   const user_context = useContext(userContext);
   const { user } = user_context;
   const getUser = localStorage.getItem("blog-user");
+
   // incoming id
   const { id } = useParams();
+
   // form values context
   const form_context = useContext(blogFormContext);
-  const { setFormValues } = form_context;
+  const { setFormValues, formValues } = form_context;
 
-  // finding the incoming id document and setting the values to form
+  // finding the blog of incoming id and setting the values to form
   const setValues = async (id) => {
     setProgress(0);
     setProgress(30);
+
     const docRef = doc(db, "blogs", id);
+
     setProgress(50);
+
     const docSnap = await getDoc(docRef);
+
     setProgress(70);
     if (docSnap.exists()) {
       const incomingData = docSnap.data();
@@ -57,7 +63,7 @@ export default function EditBlog({ setProgress }) {
 
   return (
     <div className="add-blog">
-      <BreadCrumb text="Edit Blog" />
+      <BreadCrumb text={"Edit " + formValues.title} />
       {getUser === null ? "" : <BlogForm setProgress={setProgress} />}
     </div>
   );
