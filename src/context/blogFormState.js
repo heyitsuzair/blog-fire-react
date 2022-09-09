@@ -8,6 +8,7 @@ export default function BlogState({ children }) {
     status: "",
     content: "",
     image: "",
+    views: 0,
   });
   return (
     <blogFormContext.Provider value={{ formValues, setFormValues }}>

@@ -9,6 +9,7 @@ import {
   where,
   doc,
   deleteDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { toast } from "react-toastify";
@@ -88,13 +89,16 @@ export default function BlogState({ children }) {
     slug,
     status,
     title,
-    setFormValues
+    views,
+    setFormValues,
+    setProgress,
+    setLoading
   ) => {
     // Create a query against the collection and check whether the slug is already in database or not
     const slugCheckQuery = query(blogsRef, where("slug", "==", slug));
     // executing query
     const slugCheckSnapshot = await getDocs(slugCheckQuery);
-    console.log(slugCheckSnapshot.docs);
+    setProgress(70);
     if (slugCheckSnapshot.docs.length > 0) {
       toast.error("A Blog With This Slug Already Exists!");
       return;
@@ -108,7 +112,7 @@ export default function BlogState({ children }) {
         slug: slug,
         status: status,
         title: title,
-        views: parseInt(0),
+        views: views,
       });
       //setting form value back to initial
       setFormValues({
@@ -120,19 +124,50 @@ export default function BlogState({ children }) {
         image: "",
       });
       toast.success("Blog Added!");
-      return false;
     }
+    setProgress(100);
+    setLoading(false);
   };
 
   const updateBlog = async (
+    id,
     cat,
     content,
     email,
     image,
     slug,
     status,
-    title
-  ) => {};
+    title,
+    views,
+    setProgress,
+    setLoading,
+    setChangeImage
+  ) => {
+    setDoc(doc(db, "blogs", id), {
+      category: cat,
+      content: content,
+      email: doc(db, `users/` + email),
+      image: image,
+      slug: slug,
+      status: status,
+      title: title,
+      views: views,
+    })
+      .then((res) => {
+        toast.success("Blog Updated!");
+
+        setProgress(100);
+        // setting button load to false
+        setLoading(false);
+
+        setChangeImage(false);
+      })
+      .catch((res) => {
+        toast.error("Something Went Wrong!");
+        setProgress(100);
+        setLoading(false);
+      });
+  };
 
   return (
     <blogContext.Provider
@@ -144,6 +179,7 @@ export default function BlogState({ children }) {
         userBlogs,
         deleteBlog,
         addBlog,
+        updateBlog,
       }}
     >
       {children}

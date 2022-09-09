@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function FeaturedImg({ onChange, value, setProgress }) {
+  // get current url and show the upload image button or remove image button
+  const location = useLocation();
+
   // use the following ref to trigger file input when someone clicks on upload image button
   const fileRef = useRef();
 
@@ -48,8 +52,18 @@ export default function FeaturedImg({ onChange, value, setProgress }) {
           <img src={value} alt="Loading..." />
         )}
         <div>
-          <p>Image Size Must Not Be More Than 5 MB</p>
-          <button onClick={() => handleBtnClick()}>Upload Image</button>
+          {location.pathname.match("/dashboard/editBlog") ? (
+            <>
+              <p>Image Size Must Not Be More Than 5 MB</p>
+              <button onClick={() => handleBtnClick()}>Change Image</button>
+            </>
+          ) : (
+            <>
+              <p>Image Size Must Not Be More Than 5 MB</p>
+              <button onClick={() => handleBtnClick()}>Upload Image</button>
+            </>
+          )}
+
           <input
             type="file"
             onChange={(e) => handleOnChange(e)}

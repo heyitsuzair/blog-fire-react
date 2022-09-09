@@ -37,6 +37,7 @@ export default function EditBlog({ setProgress }) {
         status: incomingData.status,
         content: incomingData.content,
         image: incomingData.image,
+        views: incomingData.views,
       });
     } else {
       toast.error("Something Went Wrong.Please Try Again!");
