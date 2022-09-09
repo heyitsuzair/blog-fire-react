@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import Header from "./Header";
@@ -11,7 +11,7 @@ import { Add, Update } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 
 export default function BlogForm({ setProgress }) {
@@ -77,7 +77,7 @@ export default function BlogForm({ setProgress }) {
         await addDoc(collection(db, "blogs"), {
           category: formValues.category,
           content: formValues.content,
-          email: user.email,
+          email: doc(db, `users/` + user.email),
           image: res.data.secure_url,
           slug: formValues.slug,
           status: formValues.status,
@@ -104,6 +104,19 @@ export default function BlogForm({ setProgress }) {
         toast.error("Something Went Wrong Please Try Again!");
       });
   };
+
+  useEffect(() => {
+    //setting form value back to initial
+    setFormValues({
+      title: "",
+      slug: "",
+      category: [],
+      status: "",
+      content: "",
+      image: "",
+    });
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <div className="blog-form">

@@ -67,7 +67,7 @@ export default function Blogs({ setProgress }) {
             >
               <Delete />
             </Button>
-            <Link to={`editClass/${cellValues.row._id}`}>
+            <Link to={`/dashboard/editBlog/${cellValues.row.id}`}>
               <Button size="small" variant="outlined" color="secondary">
                 <ModeEdit />
               </Button>

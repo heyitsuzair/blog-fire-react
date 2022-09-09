@@ -6,6 +6,7 @@ import Blogs from "../views/Blogs";
 import userContext from "../context/userContext";
 import AddBlog from "../views/AddBlog";
 import LoadingBar from "react-top-loading-bar";
+import EditBlog from "../views/EditBlog";
 export default function Dashboard() {
   const navigate = useNavigate();
   const user_context = useContext(userContext);
@@ -40,6 +41,10 @@ export default function Dashboard() {
           <Route
             path="/addBlog"
             element={<AddBlog setProgress={setProgress} />}
+          />
+          <Route
+            path="/editBlog/:id"
+            element={<EditBlog setProgress={setProgress} />}
           />
         </Routes>
       </div>
