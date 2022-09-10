@@ -1,12 +1,12 @@
 import React from "react";
-import img from "../../assets/img/thumbnail-01.webp";
 import { Link } from "react-router-dom";
 
 export default function HorizontalTab({
-  index,
+  blog,
   activeTab,
   setActiveTab,
-  desc,
+  index,
+  category,
 }) {
   // handle when mouse enters the card
   const handleMouseEnter = () => {
@@ -19,24 +19,27 @@ export default function HorizontalTab({
         className="left hover-line-primary"
         style={{ backgroundSize: index === activeTab ? "100% 2px" : "" }}
       >
-        <div className="number">{index}</div>
+        <div className="number">{index + 1}</div>
         <div className="cat-info">
           <div className="category">
-            <span>SEO</span>
+            <span>{category}</span>
           </div>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <h3 className="desc card-h3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatem voluptatum sequi!
-            </h3>
+            <h3 className="desc card-h3">{blog.title}</h3>
           </Link>
           <div className="author-info">
-            <div className="author-name">UZAIR</div>
+            <div className="author-name">{blog.userInfo.name}</div>
             <div className="info">
-              <span className="date">Jun 21 2022</span>
+              <span className="date">
+                {new Date(blog.date.seconds * 1000).getDate().toLocaleString() +
+                  "/" +
+                  new Date(blog.date.seconds * 1000).getMonth() +
+                  "/" +
+                  new Date(blog.date.seconds * 1000).getFullYear()}
+              </span>
               <span className="dot"></span>
               <span className="read">
-                {0.008 * desc.split("").length} Min Read
+                {0.008 * blog.content.length} Min Read
               </span>
             </div>
           </div>
@@ -44,7 +47,7 @@ export default function HorizontalTab({
       </div>
       <div className="right">
         <img
-          src={img}
+          src={blog.image}
           alt="Loading..."
           className={`img ${
             index === activeTab

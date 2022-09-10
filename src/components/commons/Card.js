@@ -70,14 +70,13 @@ export default function Card({ blog }) {
               <span className="author-name">{blog.userInfo.name}</span>
               <div className="info">
                 <span className="date">
-                  {" "}
                   {new Date(blog.date.seconds * 1000)
                     .getDate()
                     .toLocaleString() +
                     "/" +
                     new Date(blog.date.seconds * 1000).getMonth() +
                     "/" +
-                    new Date(blog.date.seconds * 1000).getFullYear()}{" "}
+                    new Date(blog.date.seconds * 1000).getFullYear()}
                 </span>
                 <span className="dot"></span>
                 <span className="views">{blog.views} Views</span>
