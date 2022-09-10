@@ -870,6 +870,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+.stats .stats-item .stats-icon.first {
+  justify-content: flex-start;
+}
+.stats .stats-item .stats-icon.last {
+  justify-content: flex-end;
+}
 .stats .stats-item .stats-icon .icon {
   padding: 0.7rem 0.7rem;
   border-radius: 50%;
@@ -929,6 +935,15 @@ body {
   }
   .footer .social .icon {
     margin: 0;
+  }
+  .stats .stats-item .stats-icon {
+    justify-content: flex-start;
+  }
+  .stats .stats-item .stats-icon.first {
+    justify-content: flex-start;
+  }
+  .stats .stats-item .stats-icon.last {
+    justify-content: flex-start;
   }
 }
 @media (max-width: 991px) {

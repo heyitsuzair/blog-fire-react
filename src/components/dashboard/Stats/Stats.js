@@ -25,7 +25,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
 
   return (
     <div className="stats">
-      <Grid container>
+      <Grid container justifyContent="space-between">
         <Grid item lg={6} className="stats-header">
           <h3>Statistics</h3>
         </Grid>
@@ -33,9 +33,15 @@ export default function Stats({ totalViews, published, totalBlogs }) {
           <span>Updated Few Seconds Ago</span>
         </Grid>
       </Grid>
-      <Grid container marginTop={3}>
-        <Grid item lg={3} className="stats-item">
-          <div className="stats-icon" style={{ justifyContent: "flex-start" }}>
+      <Grid
+        container
+        columnSpacing={3}
+        rowSpacing={3}
+        marginTop={4}
+        marginBottom={4}
+      >
+        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+          <div className="stats-icon first">
             <TrendingUp className="icon" />
             <div className="data">
               <span>{totalViews}</span>
@@ -43,7 +49,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} className="stats-item">
+        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
           <div className="stats-icon">
             <CheckCircle className="icon" />
             <div className="data">
@@ -52,7 +58,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} className="stats-item">
+        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
           <div className="stats-icon">
             <LocalLibraryOutlined className="icon" />
             <div className="data">
@@ -61,8 +67,8 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} className="stats-item">
-          <div className="stats-icon" style={{ justifyContent: "flex-end" }}>
+        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+          <div className="stats-icon last">
             <Storage className="icon" />
             <div className="data">
               <span>{ip === null ? "Loading..." : ip}</span>
