@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid } from "@mui/material";
 
-export default function Tabs({ tabs }) {
-  const [active, setActive] = useState(0);
-
+export default function Tabs({ tabs, setActive, active }) {
   // handle when clicked on tab and set active tab index
   const handleTabClick = (index) => {
     setActive(index);

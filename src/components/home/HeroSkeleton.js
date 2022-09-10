@@ -5,8 +5,8 @@ export default function HeroSkeleton() {
     <>
       <ContentLoader
         viewBox="0 0 200 100"
-        backgroundColor="#454545"
-        foregroundColor="#d3d3d3"
+        backgroundColor="#f2f2f2"
+        foregroundColor="#7a7b7d"
         foregroundOpacity={0.1}
       >
         {/* Only SVG shapes */}
