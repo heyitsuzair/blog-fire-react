@@ -12,6 +12,7 @@ export default function EditBlog({ setProgress }) {
   // check whether user is logged in or not
   const user_context = useContext(userContext);
   const { user } = user_context;
+
   const getUser = localStorage.getItem("blog-user");
 
   // incoming id

@@ -741,6 +741,32 @@ body {
   width: 100%;
   background-color: var(--color-primary) !important;
 }
+.main-dashboard .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.main-dashboard .user-info .info {
+  display: flex;
+  flex-direction: column;
+}
+.main-dashboard .user-info .info span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+.main-dashboard .user-info .info strong {
+  color: var(--color-heading);
+}
+.main-dashboard .user-info img {
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+  border-radius: 50%;
+}
 /* BreadCrumb Component */
 .breadcrumb {
   background-color: var(--bg-color-white);

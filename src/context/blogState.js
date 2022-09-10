@@ -32,6 +32,12 @@ export default function BlogState({ children }) {
   // total published blogs of all blogs of logged in user
   const [published, setPublished] = useState(0);
 
+  // total drafted blogs of all blogs of logged in user
+  const [draft, setDraft] = useState(0);
+
+  // total pending blogs of all blogs of logged in user
+  const [pending, setPending] = useState(0);
+
   const [blogs, setBlogs] = useState([
     {
       category: "Designs",
@@ -188,6 +194,18 @@ export default function BlogState({ children }) {
       return blog.status === "Published";
     });
     setPublished(published.length);
+
+    // total draft blogs
+    const drafts = userBlogs.filter((blog) => {
+      return blog.status === "Draft";
+    });
+    setDraft(drafts.length);
+
+    // total pending blogs
+    const pendings = userBlogs.filter((blog) => {
+      return blog.status === "Pending";
+    });
+    setPending(pendings.length);
   };
 
   return (
@@ -204,6 +222,8 @@ export default function BlogState({ children }) {
         totalViews,
         blogsCalculation,
         published,
+        draft,
+        pending,
       }}
     >
       {children}

@@ -6,10 +6,17 @@ import { Grid, Button } from "@mui/material";
 import Table from "../components/dashboard/Table/Table";
 import { ModeEdit, Delete } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import userContext from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 export default function MainDashboard({ setProgress }) {
+  const navigate = useNavigate();
   // logged in user info
   const getUser = JSON.parse(localStorage.getItem("blog-user"));
+
+  // check whether user is logged in or not
+  const user_context = useContext(userContext);
+  const { user } = user_context;
 
   // use the following context to get blog data including views, published blogs, draft blogs
   const blog_context = useContext(blogContext);
@@ -21,6 +28,8 @@ export default function MainDashboard({ setProgress }) {
     userBlogs,
     published,
     deleteBlog,
+    draft,
+    pending,
   } = blog_context;
 
   //rows for table
@@ -93,6 +102,13 @@ export default function MainDashboard({ setProgress }) {
   ];
 
   useEffect(() => {
+    // check whether user is logged in or not
+
+    if (getUser === null && user === null) {
+      navigate("/");
+      return;
+    }
+
     setProgress(0);
 
     setProgress(30);
@@ -133,8 +149,27 @@ export default function MainDashboard({ setProgress }) {
             </Link>
           )}
         </Grid>
-        <Grid item lg={3.8} className="dashboard-sec">
-          hello
+        <Grid item lg={3.8} className="dashboard-sec user-info">
+          <div className="image">
+            <img src={getUser.pic} alt="Loading..." />
+          </div>
+          <div className="info">
+            <span>
+              <strong>Email:</strong> {getUser.email}
+            </span>
+            <span>
+              <strong>Name:</strong> {getUser.name}
+            </span>
+            <span>
+              <strong>Draft:</strong> {draft}
+            </span>
+            <span>
+              <strong>Pending:</strong> {pending}
+            </span>
+            <span>
+              <strong>Total Blogs Written:</strong> {userBlogs.length}
+            </span>
+          </div>
         </Grid>
       </Grid>
     </div>
