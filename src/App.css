@@ -735,9 +735,11 @@ body {
 }
 
 /* MainDashboard View */
-.main-dashboard {
-  display: flex;
-  flex-direction: column;
+.main-dashboard .blog-form-submit {
+  font-family: "Poppins";
+  margin: 1rem 0;
+  width: 100%;
+  background-color: var(--color-primary) !important;
 }
 /* BreadCrumb Component */
 .breadcrumb {
@@ -777,6 +779,7 @@ body {
 }
 .blog-form .blog-form-submit {
   background-color: var(--color-primary) !important;
+  font-family: "Poppins";
 }
 /* Text Editor Component */
 .jodit-status-bar {
@@ -850,11 +853,12 @@ body {
   font-family: "Poppins";
   cursor: pointer;
 }
-/* Dashboard Tables Class*/
-.dashboard-table {
+/* Dashboard Sections Class*/
+.dashboard-sec {
   background-color: var(--bg-color-white);
   border-radius: 5px;
   padding: 1rem 1rem;
+  margin: 1rem 0rem;
 }
 /* Stats Component */
 .stats .stats-header h3 {
@@ -890,6 +894,7 @@ body {
   color: var(--color-midgray);
   font-weight: 500;
 }
+
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {

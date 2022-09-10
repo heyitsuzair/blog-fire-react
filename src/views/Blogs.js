@@ -100,7 +100,7 @@ export default function Blogs({ setProgress }) {
   return (
     <div className="blogs">
       <BreadCrumb text="Blogs" />
-      <div className="dashboard-table">
+      <div className="dashboard-sec">
         <Table rows={rows} columns={columns} />
       </div>
     </div>

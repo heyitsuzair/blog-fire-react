@@ -76,10 +76,10 @@ export default function BlogState({ children }) {
     });
     // settings new blogs after deleting one blog
     setUserBlogs(filteredBlogs);
+    toast.success("Blog Deleted!");
     try {
       // deleting document from blogs collection
       await deleteDoc(doc(db, "blogs", id));
-      toast.success("Blog Deleted!");
     } catch (error) {
       toast.error("Something Went Wrong!");
       return;

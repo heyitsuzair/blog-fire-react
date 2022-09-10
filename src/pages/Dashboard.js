@@ -31,12 +31,12 @@ export default function Dashboard() {
     <div className="dashboard">
       <Sidebar open={open} setOpen={setOpen} />
       <LoadingBar color="var(--color-primary)" progress={progress} height={3} />
-      <div
-        className="dashboard-sec"
-        style={{ flex: `0 0 ${open === true ? "73%" : "88%"}` }}
-      >
+      <div style={{ flex: `0 0 ${open === true ? "73%" : "88%"}` }}>
         <Routes>
-          <Route path="/" element={<MainDashboard />} />
+          <Route
+            path="/"
+            element={<MainDashboard setProgress={setProgress} />}
+          />
           <Route path="/blogs" element={<Blogs setProgress={setProgress} />} />
           <Route
             path="/addBlog"
