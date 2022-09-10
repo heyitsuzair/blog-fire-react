@@ -856,6 +856,34 @@ body {
   border-radius: 5px;
   padding: 1rem 1rem;
 }
+/* Stats Component */
+.stats .stats-header h3 {
+  color: var(--color-heading);
+  font-weight: 500;
+}
+.stats .stats-header span {
+  color: var(--color-midgray);
+}
+.stats .stats-item .stats-icon {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.stats .stats-item .stats-icon .icon {
+  padding: 0.7rem 0.7rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 10px 1px var(--color-primary);
+}
+.stats .stats-item .stats-icon .data span {
+  color: var(--color-heading);
+}
+.stats .stats-item .stats-icon .data h4 {
+  color: var(--color-midgray);
+  font-weight: 500;
+}
 /* Media Queries */
 @media (max-width: 1199px) {
   .social .icon {
