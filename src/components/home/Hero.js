@@ -4,7 +4,6 @@ import PostContent from "./PostContent";
 import Slider from "../commons/Slider";
 
 export default function Hero({ blogs }) {
-  console.log(blogs);
   return (
     <Container sx={{ maxWidth: "1280px !important" }}>
       <div className="hero">

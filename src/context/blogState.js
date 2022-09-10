@@ -9,6 +9,7 @@ import {
   deleteDoc,
   setDoc,
   orderBy,
+  Timestamp,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { toast } from "react-toastify";
@@ -114,6 +115,8 @@ export default function BlogState({ children }) {
     const slugCheckSnapshot = await getDocs(slugCheckQuery);
     setProgress(70);
     if (slugCheckSnapshot.docs.length > 0) {
+      setLoading(false);
+      setProgress(100);
       toast.error("A Blog With This Slug Already Exists!");
       return;
     } else {
@@ -127,6 +130,7 @@ export default function BlogState({ children }) {
         status: status,
         title: title,
         views: views,
+        date: Timestamp.now(),
       });
       //setting form value back to initial
       setFormValues({
@@ -167,6 +171,7 @@ export default function BlogState({ children }) {
       status: status,
       title: title,
       views: views,
+      date: Timestamp.now(),
     })
       .then((res) => {
         toast.success("Blog Updated!");

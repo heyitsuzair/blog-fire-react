@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import blogContext from "../../context/blogContext";
 import Button from "../commons/Button";
+import { Link } from "react-router-dom";
 export default function PostContentItem({ blogs }) {
   // purpose:fetch data
   const blog_context = useContext(blogContext);
@@ -20,9 +21,9 @@ export default function PostContentItem({ blogs }) {
             </div>
             <div className="content">
               <h2>
-                <a href="/" className="article hover-line">
+                <Link to={`blog/${blog.slug}`} className="article hover-line">
                   {blog.title}
-                </a>
+                </Link>
               </h2>
               <div className="author-info">
                 <div className="author-info-inner">
@@ -37,14 +38,22 @@ export default function PostContentItem({ blogs }) {
                     <div className="info-parent">
                       <div className="author-name">{blog.userInfo.name}</div>
                       <div className="info">
-                        <span className="date">Feb 30 2022 </span>
+                        <span className="date">
+                          {new Date(blog.date.seconds * 1000)
+                            .getDate()
+                            .toLocaleString() +
+                            "/" +
+                            new Date(blog.date.seconds * 1000).getMonth() +
+                            "/" +
+                            new Date(blog.date.seconds * 1000).getFullYear()}
+                        </span>
                         <span className="dot"></span>
-                        <span>200K Views</span>
+                        <span>{blog.views} Views</span>
                       </div>
                     </div>
                   </div>
                   <div className="read-more">
-                    <Button text="Read More" link="/" />
+                    <Button text="Read More" link={`blog/${blog.slug}`} />
                   </div>
                 </div>
               </div>
