@@ -51,7 +51,11 @@ export default function Card({ blog }) {
           </div>
           <div className="desc">
             <h2>
-              <Link to="/" className="hover-line" ref={lineRef}>
+              <Link
+                to={`blog/${blog.slug}`}
+                className="hover-line"
+                ref={lineRef}
+              >
                 {blog.title.substr(0, 20)}
               </Link>
             </h2>
@@ -91,7 +95,7 @@ export default function Card({ blog }) {
           justifyContent="center"
         >
           <div className="card-img-parent">
-            <Link to="/">
+            <Link to={`blog/${blog.slug}`}>
               <img
                 src={blog.image}
                 alt="Loading..."
