@@ -2,7 +2,7 @@ import React from "react";
 import PostContentItem from "./PostContentItem";
 import { Grid } from "@mui/material";
 import Arrows from "../commons/Arrows";
-export default function PostContent() {
+export default function PostContent({ blogs }) {
   return (
     <div className="post-content">
       <Grid
@@ -14,7 +14,7 @@ export default function PostContent() {
           <Arrows />
         </Grid>
         <Grid item md={6} xs={12} sm={12} className="hero-post">
-          <PostContentItem />
+          <PostContentItem blogs={blogs} />
         </Grid>
       </Grid>
     </div>

@@ -3,14 +3,15 @@ import { Container } from "@mui/system";
 import PostContent from "./PostContent";
 import Slider from "../commons/Slider";
 
-export default function Hero() {
+export default function Hero({ blogs }) {
+  console.log(blogs);
   return (
     <Container sx={{ maxWidth: "1280px !important" }}>
       <div className="hero">
-        <Slider />
+        <Slider blogs={blogs} />
       </div>
       <div className="hero-context">
-        <PostContent />
+        <PostContent blogs={blogs} />
       </div>
     </Container>
   );

@@ -1,12 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import img from "../../assets/img/author.webp";
 import blogContext from "../../context/blogContext";
 import Button from "../commons/Button";
-export default function PostContentItem() {
+export default function PostContentItem({ blogs }) {
   // purpose:fetch data
   const blog_context = useContext(blogContext);
-  const { blogs, active } = blog_context;
+  const { active } = blog_context;
+
   return (
     <>
       {blogs.map((blog, index) => {
@@ -16,22 +16,26 @@ export default function PostContentItem() {
             className="post-item animate__animated animate__fadeIn"
           >
             <div className="category">
-              <span>{blog.category}</span>
+              <span>{blog.category[0]}</span>
             </div>
             <div className="content">
               <h2>
                 <a href="/" className="article hover-line">
-                  {blog.desc}
+                  {blog.title}
                 </a>
               </h2>
               <div className="author-info">
                 <div className="author-info-inner">
                   <div className="info-author">
                     <div className="img">
-                      <img src={img} alt="Author" />
+                      <img
+                        src={blog.userInfo.pic}
+                        style={{ borderRadius: "50%" }}
+                        alt="Author"
+                      />
                     </div>
                     <div className="info-parent">
-                      <div className="author-name">{blog.by}</div>
+                      <div className="author-name">{blog.userInfo.name}</div>
                       <div className="info">
                         <span className="date">Feb 30 2022 </span>
                         <span className="dot"></span>

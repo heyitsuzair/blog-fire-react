@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import blogContext from "./blogContext";
-import image from "../assets/img/thumbnail-01.webp";
-import image2 from "../assets/img/thumbnail-02.webp";
 import {
   collection,
   getDocs,
@@ -38,28 +36,33 @@ export default function BlogState({ children }) {
   // total pending blogs of all blogs of logged in user
   const [pending, setPending] = useState(0);
 
-  const [blogs, setBlogs] = useState([
-    {
-      category: "Designs",
-      title: "Hello",
-      img: image,
-      desc: "I am Uzair A Senior Developer having experience in web development industry for 3 years",
-      by: "UZAIR",
-    },
-    {
-      category: "Sports",
-      title: "Sports",
-      img: image2,
-      desc: "I am Uzair A Senior Developer having experience in web development industry for 3 years",
-      by: "Sports",
-    },
-  ]);
+  const [blogs, setBlogs] = useState([]);
+
+  // getting all the blogs available in database that are "Published"
+  const gettingAllBlogs = async () => {
+    // Create a query against the collection and fetch the documents where "status" == "published"
+    const allBlogs = query(
+      blogsRef,
+      where("status", "==", "Published"),
+      orderBy("views", "desc")
+    );
+    // executing query
+    const allBlogsSnapshot = await getDocs(allBlogs);
+
+    // doc.data() is never undefined for query doc snapshots
+    setBlogs(
+      allBlogsSnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+    );
+  };
 
   const LoggedInUserBlogs = async (email) => {
     // Create a query against the collection and fetch the documents where "email" == "logged in user email"
     const blogsOfLoggedIn = query(
       blogsRef,
-      where("email", "==", doc(db, `users/` + email)),
+      where("userInfo.email", "==", email),
       orderBy("views", "desc")
     );
     // executing query
@@ -95,7 +98,7 @@ export default function BlogState({ children }) {
   const addBlog = async (
     cat,
     content,
-    email,
+    user,
     image,
     slug,
     status,
@@ -118,7 +121,7 @@ export default function BlogState({ children }) {
       await addDoc(collection(db, "blogs"), {
         category: cat,
         content: content,
-        email: doc(db, `users/` + email),
+        userInfo: user,
         image: image,
         slug: slug,
         status: status,
@@ -133,6 +136,7 @@ export default function BlogState({ children }) {
         status: "",
         content: "",
         image: "",
+        views: 0,
       });
       toast.success("Blog Added!");
     }
@@ -144,7 +148,7 @@ export default function BlogState({ children }) {
     id,
     cat,
     content,
-    email,
+    user,
     image,
     slug,
     status,
@@ -157,7 +161,7 @@ export default function BlogState({ children }) {
     setDoc(doc(db, "blogs", id), {
       category: cat,
       content: content,
-      email: doc(db, `users/` + email),
+      userInfo: user,
       image: image,
       slug: slug,
       status: status,
@@ -224,6 +228,7 @@ export default function BlogState({ children }) {
         published,
         draft,
         pending,
+        gettingAllBlogs,
       }}
     >
       {children}
