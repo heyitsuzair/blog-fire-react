@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 export default function Stats({ totalViews, published, totalBlogs }) {
   // state to set user ip
-  const [ip, setIp] = useState();
+  const [ip, setIp] = useState(null);
 
   // getting visitor's "ip"
   const getIp = async () => {
@@ -65,7 +65,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
           <div className="stats-icon" style={{ justifyContent: "flex-end" }}>
             <Storage className="icon" />
             <div className="data">
-              <span>{ip}</span>
+              <span>{ip === null ? "Loading..." : ip}</span>
               <h4>Your IP</h4>
             </div>
           </div>
