@@ -29,7 +29,15 @@ export default function BlogForm({ setProgress }) {
   const { addBlog, updateBlog } = blog_context;
 
   // multiple select values
-  const categories = ["Design", "Technology", "SEO"];
+  const categories = [
+    "Design",
+    "Technology",
+    "SEO",
+    "Gadget",
+    "Travel",
+    "Research",
+    "Marketing",
+  ];
   const status = ["Published", "Pending", "Draft"];
 
   // logged in user info
