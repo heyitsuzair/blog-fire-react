@@ -22,7 +22,7 @@ export default function PostContentItem({ blogs }) {
             <div className="content">
               <h2>
                 <Link to={`blog/${blog.slug}`} className="article hover-line">
-                  {blog.title}
+                  {blog.title.substr(0, 20)}
                 </Link>
               </h2>
               <div className="author-info">

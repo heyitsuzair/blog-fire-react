@@ -29,7 +29,7 @@ export default function Home() {
         ) : (
           <Hero blogs={blogs.slice(0, 2)} />
         )}
-        <FeaturedPosts />
+        <FeaturedPosts blogs={blogs.slice(0, 2)} />
         <Innovation />
         <TrendingTopics />
         <MostPopular />

@@ -1,10 +1,8 @@
 import React, { useRef } from "react";
 import { Grid } from "@mui/material";
-import img from "../../assets/img/author.webp";
-import img2 from "../../assets/img/thumbnail-01.webp";
 import { Link } from "react-router-dom";
 
-export default function Card() {
+export default function Card({ blog }) {
   // use the following ref to underline the paragraph when hovered on card
   const lineRef = useRef();
   // use the following ref to scale the image when hovered on card
@@ -12,16 +10,19 @@ export default function Card() {
   // use the following ref to make the card active when hovered on card
   const cardRef = useRef();
 
+  // handle when someones enter the mouse in card
   const handleMouseEnter = () => {
     lineRef.current.style.backgroundSize = "100% 2px";
     imgRef.current.style.transform = "scale(1.1)";
     cardRef.current.classList.add("card-active");
   };
+  // handle when someones leave the mouse from card
   const handleMouseLeave = () => {
     lineRef.current.style.backgroundSize = "0 2px";
     imgRef.current.style.transform = "none";
     cardRef.current.classList.remove("card-active");
   };
+
   return (
     <div
       className="card-parent"
@@ -46,23 +47,36 @@ export default function Card() {
           gap={{ md: 3, xs: 3, sm: 3 }}
         >
           <div className="category">
-            <span>Design</span>
+            <span>{blog.category[0]}</span>
           </div>
           <div className="desc">
             <h2>
               <Link to="/" className="hover-line" ref={lineRef}>
-                Description will be here
+                {blog.title.substr(0, 20)}
               </Link>
             </h2>
           </div>
           <div className="author">
-            <img src={img} alt="Author" />
+            <img
+              src={blog.userInfo.pic}
+              style={{ borderRadius: "50%" }}
+              alt="Author"
+            />
             <div className="author-info">
-              <span className="author-name">John Doe</span>
+              <span className="author-name">{blog.userInfo.name}</span>
               <div className="info">
-                <span className="date">Feb 10 2022 </span>
+                <span className="date">
+                  {" "}
+                  {new Date(blog.date.seconds * 1000)
+                    .getDate()
+                    .toLocaleString() +
+                    "/" +
+                    new Date(blog.date.seconds * 1000).getMonth() +
+                    "/" +
+                    new Date(blog.date.seconds * 1000).getFullYear()}{" "}
+                </span>
                 <span className="dot"></span>
-                <span className="views">300K Views</span>
+                <span className="views">{blog.views} Views</span>
               </div>
             </div>
           </div>
@@ -79,7 +93,7 @@ export default function Card() {
           <div className="card-img-parent">
             <Link to="/">
               <img
-                src={img2}
+                src={blog.image}
                 alt="Loading..."
                 className="card-img"
                 ref={imgRef}
