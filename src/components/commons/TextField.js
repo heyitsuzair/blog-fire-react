@@ -36,7 +36,6 @@ export default function TextFieldComponent({ label, value, onChange }) {
   // purpose:to check whether if it is edit blog page, if yes, than check if label is slug,if yes than add a disabled attribute to text field
   const checkIfEdit = (label) => {
     if (label === "Slug" && location.pathname.match("/dashboard/editBlog")) {
-      console.log(ref.current);
       ref.current.setAttribute("disabled", "");
       ref.current.style.opacity = ".5";
     }

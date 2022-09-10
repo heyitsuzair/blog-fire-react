@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import {
   CheckCircle,
-  PauseCircleFilled,
+  LocalLibraryOutlined,
   Storage,
   TrendingUp,
 } from "@mui/icons-material";
 import axios from "axios";
-export default function Stats() {
+export default function Stats({ totalViews, published, totalBlogs }) {
   // state to set user ip
   const [ip, setIp] = useState();
 
@@ -38,7 +38,7 @@ export default function Stats() {
           <div className="stats-icon" style={{ justifyContent: "flex-start" }}>
             <TrendingUp className="icon" />
             <div className="data">
-              <span>0</span>
+              <span>{totalViews}</span>
               <h4>Views</h4>
             </div>
           </div>
@@ -47,17 +47,17 @@ export default function Stats() {
           <div className="stats-icon">
             <CheckCircle className="icon" />
             <div className="data">
-              <span>0</span>
+              <span>{published}</span>
               <h4>Published Blogs</h4>
             </div>
           </div>
         </Grid>
         <Grid item lg={3} className="stats-item">
           <div className="stats-icon">
-            <PauseCircleFilled className="icon" />
+            <LocalLibraryOutlined className="icon" />
             <div className="data">
-              <span>0</span>
-              <h4>Pending Blogs</h4>
+              <span>{totalBlogs}</span>
+              <h4>Total Blogs</h4>
             </div>
           </div>
         </Grid>

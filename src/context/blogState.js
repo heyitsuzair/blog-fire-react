@@ -26,6 +26,12 @@ export default function BlogState({ children }) {
   // logged in user blogs state
   const [userBlogs, setUserBlogs] = useState([]);
 
+  // total views of all blogs of logged in user
+  const [totalViews, setTotalViews] = useState(0);
+
+  // total published blogs of all blogs of logged in user
+  const [published, setPublished] = useState(0);
+
   const [blogs, setBlogs] = useState([
     {
       category: "Designs",
@@ -168,6 +174,22 @@ export default function BlogState({ children }) {
       });
   };
 
+  // calculating total views, published and pending blogs for stats
+  const blogsCalculation = () => {
+    // total views
+    let count = 0;
+    userBlogs.forEach((blog) => {
+      count += blog.views;
+      setTotalViews(count);
+    });
+
+    // total published blogs
+    const published = userBlogs.filter((blog) => {
+      return blog.status === "Published";
+    });
+    setPublished(published.length);
+  };
+
   return (
     <blogContext.Provider
       value={{
@@ -179,6 +201,9 @@ export default function BlogState({ children }) {
         deleteBlog,
         addBlog,
         updateBlog,
+        totalViews,
+        blogsCalculation,
+        published,
       }}
     >
       {children}
