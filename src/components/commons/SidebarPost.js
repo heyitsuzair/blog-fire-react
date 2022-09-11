@@ -62,7 +62,7 @@ export default function SidebarPost({ blog }) {
               {" "}
               {new Date(blog.date.seconds * 1000).getDate().toLocaleString() +
                 "/" +
-                new Date(blog.date.seconds * 1000).getMonth() +
+                parseInt(new Date(blog.date.seconds * 1000).getMonth() + 1) +
                 "/" +
                 new Date(blog.date.seconds * 1000).getFullYear()}
             </span>

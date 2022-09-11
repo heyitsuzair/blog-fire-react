@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Blog from "./pages/Blog";
+import SingleBlog from "./pages/SingleBlog";
 
 import LoadingBar from "react-top-loading-bar";
 
@@ -61,6 +62,10 @@ function App() {
                   <Route
                     path="/blog"
                     element={<Blog setProgress={setProgress} />}
+                  />
+                  <Route
+                    path="/blog/:slug"
+                    element={<SingleBlog setProgress={setProgress} />}
                   />
                   <Route
                     path="/dashboard/*"
