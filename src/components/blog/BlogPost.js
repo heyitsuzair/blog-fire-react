@@ -3,20 +3,41 @@ import { Grid } from "@mui/material";
 import { Interweave } from "interweave";
 import FloatingBtn from "./FloatingBtn";
 import bookmarkContext from "../../context/bookmarkContext";
+import { BookmarkAdd, Link } from "@mui/icons-material";
+import { toast } from "react-toastify";
 
 export default function BlogPost({ blog }) {
   // bookmark context
   const bookmark_context = useContext(bookmarkContext);
   const { addBookmark } = bookmark_context;
 
-  const action = () => {
+  // add to bookmark action
+  const addToBookmark = () => {
+    // calling "addBookmark" function available in bookmarkState.js
     addBookmark(blog);
+  };
+
+  // copy lint
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success("Link Copied!");
   };
 
   return (
     <>
       <div className="float">
-        <FloatingBtn action={action} />
+        <FloatingBtn
+          action={addToBookmark}
+          icon={<BookmarkAdd />}
+          btnClass="primary"
+          position="bottom-right"
+        />
+        <FloatingBtn
+          action={copyLink}
+          position="bottom-left"
+          icon={<Link />}
+          btnClass="secondary"
+        />
       </div>
       <div className="blog-post">
         <div className="author">

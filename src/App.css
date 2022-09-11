@@ -832,6 +832,10 @@ body {
   stroke: var(--color-heading);
   fill: var(--color-heading);
 }
+.jodit-wysiwyg * {
+  background-color: var(--bg-color-white) !important;
+  color: var(--color-heading) !important;
+}
 .jodit-wysiwyg p {
   color: var(--color-heading);
 }
@@ -965,9 +969,20 @@ body {
 .blog-post .content {
   margin-top: 2rem;
 }
+.blog-post .markup {
+  margin-top: 2rem;
+}
+.blog-post .markup * {
+  background-color: var(--color-black-light) !important;
+  color: var(--color-heading) !important;
+}
 /* Floating Button Component */
-.floating-btn {
+
+.floating-btn.primary {
   background-color: var(--color-primary) !important;
+}
+.floating-btn.secondary {
+  background-color: var(--color-secondary) !important;
 }
 .floating-btn svg {
   color: white;
