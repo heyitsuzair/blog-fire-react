@@ -10,10 +10,10 @@ import {
   setDoc,
   orderBy,
   Timestamp,
+  addDoc,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { toast } from "react-toastify";
-import { addDoc } from "firebase/firestore";
 
 export default function BlogState({ children }) {
   // reference to blogs collection

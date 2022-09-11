@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Interweave } from "interweave";
 import FloatingBtn from "./FloatingBtn";
 import bookmarkContext from "../../context/bookmarkContext";
 import { BookmarkAdd, Link } from "@mui/icons-material";
 import { toast } from "react-toastify";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase-config";
 
 export default function BlogPost({ blog }) {
   // bookmark context
@@ -25,6 +27,22 @@ export default function BlogPost({ blog }) {
 
   // changing document title
   document.title = blog.title;
+
+  useEffect(() => {
+    setDoc(doc(db, "blogs", blog.id), {
+      category: blog.category,
+      content: blog.content,
+      userInfo: blog.userInfo,
+      image: blog.image,
+      slug: blog.slug,
+      status: blog.status,
+      title: blog.title,
+      views: parseInt(blog.views + 1),
+      date: blog.date,
+    });
+
+    //eslint-disable-next-line
+  }, [blog.slug]);
 
   return (
     <>
@@ -82,7 +100,7 @@ export default function BlogPost({ blog }) {
             <Grid item>
               <div className="status">
                 <strong>Views : </strong>
-                <span>{blog.views}</span>
+                <span>{blog.views + 1}</span>
               </div>
             </Grid>
           </Grid>
