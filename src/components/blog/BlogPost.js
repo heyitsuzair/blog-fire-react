@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { Interweave } from "interweave";
 import FloatingBtn from "./FloatingBtn";
@@ -12,6 +12,9 @@ export default function BlogPost({ blog }) {
   // bookmark context
   const bookmark_context = useContext(bookmarkContext);
   const { addBookmark } = bookmark_context;
+
+  // state that will change according to the criteria which check whether view is already counted or not
+  const [views, setViews] = useState(null);
 
   // add to bookmark action
   const addToBookmark = () => {
@@ -28,19 +31,34 @@ export default function BlogPost({ blog }) {
   // changing document title
   document.title = blog.title;
 
+  const addView = async () => {
+    if (localStorage.getItem(`blog-${blog.id}`) === null) {
+      // adding view when someone visits blog
+      await setDoc(doc(db, "blogs", blog.id), {
+        category: blog.category,
+        content: blog.content,
+        userInfo: blog.userInfo,
+        image: blog.image,
+        slug: blog.slug,
+        status: blog.status,
+        title: blog.title,
+        views: parseInt(blog.views + 1),
+        date: blog.date,
+      });
+      // setting to local storage to prevent adding it again
+      localStorage.setItem(`blog-${blog.id}`, `View Count`);
+
+      const newViews = blog.views + 1;
+      // view state to preview to visitor
+      setViews(newViews);
+    } else {
+      setViews(blog.views);
+      return;
+    }
+  };
+
   useEffect(() => {
-    // adding view when someone visits blog
-    setDoc(doc(db, "blogs", blog.id), {
-      category: blog.category,
-      content: blog.content,
-      userInfo: blog.userInfo,
-      image: blog.image,
-      slug: blog.slug,
-      status: blog.status,
-      title: blog.title,
-      views: parseInt(blog.views + 1),
-      date: blog.date,
-    });
+    addView();
     //eslint-disable-next-line
   }, [blog.slug]);
 
@@ -100,7 +118,7 @@ export default function BlogPost({ blog }) {
             <Grid item>
               <div className="status">
                 <strong>Views : </strong>
-                <span>{blog.views + 1}</span>
+                <span>{views === null ? "Loading..." : views}</span>
               </div>
             </Grid>
           </Grid>
