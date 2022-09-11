@@ -25,7 +25,7 @@ export default function NestedList() {
         </Link>
       </ListItemButton>
       <ListItemButton>
-        <Link to="/" className="list-item">
+        <Link to="/blog" className="list-item">
           Blog
         </Link>
       </ListItemButton>

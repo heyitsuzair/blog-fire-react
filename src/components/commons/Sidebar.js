@@ -1,9 +1,9 @@
-import React from "react"
-import { Grid } from "@mui/material"
-import Search from "./Search"
-import SidebarPost from "./SidebarPost"
-import { LinkedIn, Facebook, Twitter, GitHub } from "@mui/icons-material"
-export default function Sidebar() {
+import React from "react";
+import { Grid } from "@mui/material";
+import Search from "./Search";
+import SidebarPost from "./SidebarPost";
+import { LinkedIn, Facebook, Twitter, GitHub } from "@mui/icons-material";
+export default function Sidebar({ blogs }) {
   return (
     <div className="sidebar">
       <Grid container gap={2}>
@@ -13,10 +13,9 @@ export default function Sidebar() {
         </Grid>
         <Grid item className="sidebar-item" lg={12} md={12} sm={12} xs={12}>
           <h3>Popular</h3>
-          <SidebarPost />
-          <SidebarPost />
-          <SidebarPost />
-          <SidebarPost />
+          {blogs.map((blog, index) => {
+            return <SidebarPost key={index} blog={blog} />;
+          })}
         </Grid>
         <Grid item className="sidebar-item" lg={12} md={12} sm={12} xs={12}>
           <h3>Stay In Touch</h3>
@@ -65,5 +64,5 @@ export default function Sidebar() {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }

@@ -8,14 +8,22 @@ import ModeState from "./context/modeState";
 import BlogState from "./context/blogState";
 import UserState from "./context/userState";
 import BlogFormState from "./context/blogFormState";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Blog from "./pages/Blog";
+
+import LoadingBar from "react-top-loading-bar";
+
 function App() {
+  // state for progress bar
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     if (!localStorage.getItem("mode")) {
       localStorage.setItem("mode", "light");
     }
+
     //eslint-disable-next-line
   }, []);
 
@@ -26,6 +34,15 @@ function App() {
           <BlogState>
             <UserState>
               <BlogFormState>
+                <LoadingBar
+                  color={
+                    localStorage.getItem("mode") === "dark"
+                      ? "var(--color-primary)"
+                      : "var(--color-secondary)"
+                  }
+                  progress={progress}
+                  height={3}
+                />
                 <ToastContainer
                   autoClose={2000}
                   position="top-right"
@@ -36,9 +53,19 @@ function App() {
                 />
                 <ThemeSwitcher />
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route
+                    path="/"
+                    element={<Home setProgress={setProgress} />}
+                  />
                   <Route path="/auth" element={<Auth />} />
-                  <Route path="/dashboard/*" element={<Dashboard />} />
+                  <Route
+                    path="/blog"
+                    element={<Blog setProgress={setProgress} />}
+                  />
+                  <Route
+                    path="/dashboard/*"
+                    element={<Dashboard setProgress={setProgress} />}
+                  />
                 </Routes>
               </BlogFormState>
             </UserState>

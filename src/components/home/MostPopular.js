@@ -58,18 +58,21 @@ export default function Innovation() {
         ) : (
           <Grid container marginTop={{ md: 3 }}>
             <Grid item md={12}>
-              {parsedBlogs.slice(0, 3).map((blog, index) => {
-                return (
-                  <HorizontalTab
-                    key={index}
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                    blog={blog}
-                    index={index}
-                    category={tabs[active]}
-                  />
-                );
-              })}
+              {parsedBlogs
+                .slice(0, 3)
+                .sort(() => Math.random() - 0.5)
+                .map((blog, index) => {
+                  return (
+                    <HorizontalTab
+                      key={index}
+                      activeTab={activeTab}
+                      setActiveTab={setActiveTab}
+                      blog={blog}
+                      index={index}
+                      category={tabs[active]}
+                    />
+                  );
+                })}
             </Grid>
           </Grid>
         )}

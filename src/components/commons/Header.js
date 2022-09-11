@@ -40,7 +40,7 @@ export default function Header() {
           gap={2}
         >
           <MenuItem title="Home" to="/" />
-          <MenuItem title="Blogs" to="/" />
+          <MenuItem title="Blogs" to="/blog" />
           {getUser !== null || user !== null ? (
             <MenuItem title="Dashboard" to="/dashboard" />
           ) : (

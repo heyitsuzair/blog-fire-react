@@ -55,13 +55,16 @@ export default function Innovation() {
           <VerticalCardSkeleton />
         ) : (
           <Grid container columnSpacing={{ md: 2, sm: 2, xs: 1 }}>
-            {parsedBlogs.slice(0, 3).map((blog, index) => {
-              return (
-                <Grid key={index} item md={4} xs={12} sm={6}>
-                  <VerticalCard blog={blog} category={tabs[active]} />
-                </Grid>
-              );
-            })}
+            {parsedBlogs
+              .slice(0, 3)
+              .sort(() => Math.random() - 0.5)
+              .map((blog, index) => {
+                return (
+                  <Grid key={index} item md={4} xs={12} sm={6}>
+                    <VerticalCard blog={blog} category={tabs[active]} />
+                  </Grid>
+                );
+              })}
           </Grid>
         )}
       </Container>

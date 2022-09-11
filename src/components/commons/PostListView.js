@@ -29,7 +29,7 @@ export default function PostListView({ blog }) {
   const minutes = 0.008 * blog.content.length;
 
   return (
-    <Link to={`blog/${blog.slug}`} className="td-none">
+    <Link to={`/blog/${blog.slug}`} className="td-none">
       <Grid
         container
         className="post-list-container"
