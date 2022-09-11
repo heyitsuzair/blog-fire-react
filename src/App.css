@@ -958,6 +958,13 @@ body {
 .blog-post .content {
   margin-top: 2rem;
 }
+/* Floating Button Component */
+.floating-btn {
+  background-color: var(--color-primary) !important;
+}
+.floating-btn svg {
+  color: white;
+}
 /* Spinner Component */
 .spinner {
   height: 75vh;
