@@ -5,6 +5,7 @@ import Tabs from "../commons/Tabs";
 import HorizontalTab from "../commons/HorizontalTab";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase-config";
+import HorizontalTabSkeleton from "./HorizontalTabSkeleton";
 export default function Innovation() {
   // active state for tab
   const [active, setActive] = useState(0);
@@ -52,22 +53,26 @@ export default function Innovation() {
         <Grid container gap={{ md: 2, sm: 2, xs: 1 }}>
           <Tabs tabs={tabs} setActive={setActive} active={active} />
         </Grid>
-        <Grid container marginTop={{ md: 3 }}>
-          <Grid item md={12}>
-            {parsedBlogs.map((blog, index) => {
-              return (
-                <HorizontalTab
-                  key={index}
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-                  blog={blog}
-                  index={index}
-                  category={tabs[active]}
-                />
-              );
-            })}
+        {loading === true ? (
+          <HorizontalTabSkeleton />
+        ) : (
+          <Grid container marginTop={{ md: 3 }}>
+            <Grid item md={12}>
+              {parsedBlogs.slice(0, 3).map((blog, index) => {
+                return (
+                  <HorizontalTab
+                    key={index}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    blog={blog}
+                    index={index}
+                    category={tabs[active]}
+                  />
+                );
+              })}
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Container>
     </div>
   );

@@ -13,6 +13,9 @@ export default function HorizontalTab({
     setActiveTab(index);
   };
 
+  // calculate minutes to read
+  const minutes = 0.008 * blog.content.length;
+
   return (
     <div className="horizontal-tab" onMouseEnter={() => handleMouseEnter()}>
       <div
@@ -38,9 +41,7 @@ export default function HorizontalTab({
                   new Date(blog.date.seconds * 1000).getFullYear()}
               </span>
               <span className="dot"></span>
-              <span className="read">
-                {0.008 * blog.content.length} Min Read
-              </span>
+              <span className="read">{minutes.toFixed(1)} Min Read</span>
             </div>
           </div>
         </div>
