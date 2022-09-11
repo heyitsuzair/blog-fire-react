@@ -82,6 +82,9 @@ export default function Blogs({ setProgress }) {
     },
   ];
 
+  // changing document title
+  document.title = "My Blogs";
+
   useEffect(() => {
     LoggedInUserBlogs(getUser.email);
     //eslint-disable-next-line

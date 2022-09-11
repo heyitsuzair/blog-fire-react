@@ -6,8 +6,12 @@ import PostList from "../components/commons/PostList";
 import blogContext from "../context/blogContext";
 
 export default function Blog({ setProgress }) {
+  // purpose:to get all blogs in db
   const blog_context = useContext(blogContext);
   const { gettingAllBlogs, blogs } = blog_context;
+
+  // changing document title
+  document.title = "Blogs";
 
   useEffect(() => {
     setProgress(0);

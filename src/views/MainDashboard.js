@@ -21,6 +21,9 @@ export default function MainDashboard({ setProgress }) {
   // use the following context to get blog data including views, published blogs, draft blogs
   const blog_context = useContext(blogContext);
 
+  // changing document title
+  document.title = "Dashboard";
+
   const {
     LoggedInUserBlogs,
     blogsCalculation,

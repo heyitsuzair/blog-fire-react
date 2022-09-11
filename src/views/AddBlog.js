@@ -19,6 +19,9 @@ export default function AddBlog({ setProgress }) {
     //eslint-disable-next-line
   }, []);
 
+  // changing document title
+  document.title = "Add Blog";
+
   return (
     <div className="add-blog">
       <BreadCrumb text="Add Blog" />

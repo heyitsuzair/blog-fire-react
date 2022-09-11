@@ -62,6 +62,10 @@ export default function EditBlog({ setProgress }) {
     //eslint-disable-next-line
   }, [id]);
 
+  // changing document title
+  document.title =
+    formValues.title === "" ? "Loading..." : "Edit Blog - " + formValues.title;
+
   return (
     <div className="add-blog">
       <BreadCrumb text={"Edit " + formValues.title} />

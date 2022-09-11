@@ -23,6 +23,9 @@ export default function BlogPost({ blog }) {
     toast.success("Link Copied!");
   };
 
+  // changing document title
+  document.title = blog.title;
+
   return (
     <>
       <div className="float">
@@ -89,7 +92,12 @@ export default function BlogPost({ blog }) {
             <img src={blog.image} alt="Loading..." className="img" />
           </div>
           <div className="category">
-            <Grid container justifyContent="space-between">
+            <Grid
+              container
+              justifyContent={
+                blog.category.length === 2 ? "flex-start" : "space-between"
+              }
+            >
               {blog.category.map((cat, index) => {
                 return (
                   <Grid key={index} item lg={1.5} md={2} sm={2} xs={4}>

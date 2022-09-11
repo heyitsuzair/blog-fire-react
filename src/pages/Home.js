@@ -21,6 +21,9 @@ export default function Home({ setProgress }) {
     //eslint-disable-next-line
   }, []);
 
+  // changing document title
+  document.title = "Home";
+
   return (
     <>
       <Header />

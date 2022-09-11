@@ -21,6 +21,9 @@ export default function Register() {
     ref.current.classList.remove("right-panel-active");
   };
 
+  // changing document title
+  document.title = "Authentication";
+
   return (
     <div className="login-reg">
       <div className="container" id="container" ref={ref}>
