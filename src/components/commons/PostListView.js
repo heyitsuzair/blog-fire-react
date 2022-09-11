@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import { Grid } from "@mui/material";
-import img from "../../assets/img/thumbnail-01.webp";
 import { Link } from "react-router-dom";
 
-export default function PostListView() {
+export default function PostListView({ blog }) {
   // use the following reference to make the image active when someone brings mouse in card
   const imgRef = useRef();
 
@@ -25,37 +24,57 @@ export default function PostListView() {
     cardRef.current.classList.remove("active");
     headRef.current.style.backgroundSize = "0 2px";
   };
+
+  // calculate minutes to read
+  const minutes = 0.008 * blog.content.length;
+
   return (
-    <Link to="/" className="td-none">
+    <Link to={`blog/${blog.slug}`} className="td-none">
       <Grid
         container
         className="post-list-container"
         onMouseEnter={() => handleMouseEnter()}
         onMouseLeave={() => handleMouseLeave()}
         columnSpacing={{ md: 2, sm: 2 }}
+        alignItems="center"
       >
         <Grid item lg={5} md={6} sm={6} xs={12}>
           <div className="img-parent">
-            <img src={img} alt="Loading..." className="img" ref={imgRef} />
+            <img
+              src={blog.image}
+              alt="Loading..."
+              className="img"
+              ref={imgRef}
+            />
           </div>
         </Grid>
         <Grid item lg={7} md={6} sm={6} xs={12}>
           <div className="post-list-card" ref={cardRef}>
             <div className="category">
-              <span>Design</span>
+              {blog.category.slice(0, 3).map((category, index) => {
+                return <span key={index}>{category}</span>;
+              })}
             </div>
             <div className="desc">
               <h3 className="card-h3 hover-line" ref={headRef}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam
-                consectetur quo sint inventore est quas?
+                {blog.title}
               </h3>
             </div>
             <div className="author">
-              <div className="author-name">UZAIR</div>
+              <div className="author-name">{blog.userInfo.name}</div>
               <div className="info">
-                <span className="date">Jun 30 2022</span>
+                <span className="date">
+                  {" "}
+                  {new Date(blog.date.seconds * 1000)
+                    .getDate()
+                    .toLocaleString() +
+                    "/" +
+                    new Date(blog.date.seconds * 1000).getMonth() +
+                    "/" +
+                    new Date(blog.date.seconds * 1000).getFullYear()}
+                </span>
                 <span className="dot"></span>
-                <span className="read">3 Min Read</span>
+                <span className="read">{minutes.toFixed(1)} Min Read</span>
               </div>
             </div>
           </div>

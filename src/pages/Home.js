@@ -34,7 +34,7 @@ export default function Home() {
         <TrendingTopics />
         <MostPopular />
         <Social />
-        <PostList />
+        <PostList blogs={blogs} />
       </div>
       <Footer />
     </>
