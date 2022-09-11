@@ -8,6 +8,7 @@ import BlogPost from "../components/blog/BlogPost";
 import { useParams } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
+import Spinner from "../components/commons/Spinner";
 
 export default function Blog({ setProgress }) {
   // purpose:get all blogs to render in sidebar
@@ -50,7 +51,7 @@ export default function Blog({ setProgress }) {
     setProgress(70);
     getBlogInfo(slug);
     //eslint-disable-next-line
-  }, []);
+  }, [slug]);
 
   return (
     <>
@@ -59,11 +60,17 @@ export default function Blog({ setProgress }) {
         <Container sx={{ maxWidth: "1280px !important" }}>
           <Grid container columnSpacing={{ lg: 3, md: 0 }}>
             <Grid item lg={8} md={12} sm={12} xs={12}>
-              {loading === true ? "" : <BlogPost blog={blogInfo[0]} />}
+              {loading === true ? (
+                <div className="blog-post">
+                  <Spinner />
+                </div>
+              ) : (
+                <BlogPost blog={blogInfo[0]} />
+              )}
             </Grid>
             <Grid item lg={4} md={12} sm={12} xs={12}>
               <Sidebar
-                blogs={blogs.slice(0, 4).sort(() => Math.random() - 0.5)}
+                blogs={blogs.sort(() => Math.random() - 0.5).slice(0, 4)}
               />
             </Grid>
           </Grid>

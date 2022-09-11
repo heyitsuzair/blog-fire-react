@@ -40,7 +40,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
         marginTop={4}
         marginBottom={4}
       >
-        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+        <Grid item lg={3} md={6} sm={6} xs={6} className="stats-item">
           <div className="stats-icon first">
             <TrendingUp className="icon" />
             <div className="data">
@@ -49,7 +49,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+        <Grid item lg={3} md={6} sm={6} xs={6} className="stats-item">
           <div className="stats-icon">
             <CheckCircle className="icon" />
             <div className="data">
@@ -58,7 +58,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+        <Grid item lg={3} md={6} sm={6} xs={6} className="stats-item">
           <div className="stats-icon">
             <LocalLibraryOutlined className="icon" />
             <div className="data">
@@ -67,7 +67,7 @@ export default function Stats({ totalViews, published, totalBlogs }) {
             </div>
           </div>
         </Grid>
-        <Grid item lg={3} md={3} sm={6} xs={6} className="stats-item">
+        <Grid item lg={3} md={6} sm={6} xs={6} className="stats-item">
           <div className="stats-icon last">
             <Storage className="icon" />
             <div className="data">

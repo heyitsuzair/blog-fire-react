@@ -136,8 +136,8 @@ export default function MainDashboard({ setProgress }) {
           totalBlogs={userBlogs.length}
         />
       </div>
-      <Grid container gap={{ lg: 2 }}>
-        <Grid item lg={8} className="dashboard-sec">
+      <Grid container gap={{ lg: 2, md: 2, sm: 2, xs: 2 }}>
+        <Grid item lg={8} md={12} sm={12} xs={12} className="dashboard-sec">
           <Table rows={rows.slice(0, 2)} columns={columns} />
           {rows.length < 1 ? (
             ""
@@ -149,7 +149,14 @@ export default function MainDashboard({ setProgress }) {
             </Link>
           )}
         </Grid>
-        <Grid item lg={3.8} className="dashboard-sec user-info">
+        <Grid
+          item
+          lg={3.8}
+          md={12}
+          sm={12}
+          xs={12}
+          className="dashboard-sec user-info"
+        >
           <div className="image">
             <img src={getUser.pic} alt="Loading..." />
           </div>

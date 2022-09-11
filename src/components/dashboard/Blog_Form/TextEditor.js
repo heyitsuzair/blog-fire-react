@@ -6,6 +6,8 @@ export default function TextEditor({ label, onChange, value }) {
 
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/
+    askBeforePasteFromWord: false,
+    askBeforePasteHTML: false,
   };
 
   return (

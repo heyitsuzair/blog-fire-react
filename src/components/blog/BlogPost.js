@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import { Interweave } from "interweave";
 
 export default function BlogPost({ blog }) {
   console.log(blog);
@@ -12,6 +13,7 @@ export default function BlogPost({ blog }) {
           justifyContent="space-between"
           className="author-inner"
           container
+          gap={{ xs: 2 }}
         >
           <Grid item>
             <div className="by">
@@ -37,10 +39,35 @@ export default function BlogPost({ blog }) {
               <span>{blog.status}</span>
             </div>
           </Grid>
+          <Grid item>
+            <div className="status">
+              <strong>Views : </strong>
+              <span>{blog.views}</span>
+            </div>
+          </Grid>
         </Grid>
       </div>
       <div className="content">
-        <img src={blog.image} alt="Loading..." className="img" />
+        <div className="image">
+          <img src={blog.image} alt="Loading..." className="img" />
+        </div>
+        <div className="category">
+          <Grid container justifyContent="space-between">
+            {blog.category.map((cat, index) => {
+              return (
+                <Grid key={index} item lg={1.5} md={2} sm={2} xs={4}>
+                  <span key={index}>{cat}</span>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </div>
+        <div className="title">
+          <h3 className="hover-line">{blog.title}</h3>
+        </div>
+        <div className="markup">
+          <Interweave content={blog.content} />
+        </div>
       </div>
     </div>
   );
