@@ -172,12 +172,19 @@ body {
   align-items: center;
   padding: 0.5rem 0.5rem;
   border-radius: 50px;
+  justify-content: center;
+  width: 23px;
+  color: var(--color-midgray);
+}
+.header-icons svg {
+  padding: 0.3rem 0;
 }
 .header-icons:hover {
   background-color: var(--color-primary);
   cursor: pointer;
 }
-.header-icons:hover svg {
+.header-icons:hover svg,
+.header-icons:hover {
   color: var(--color-white);
 }
 .header-icons svg {
@@ -204,7 +211,7 @@ body {
 }
 .profile-pic img {
   border-radius: 50px;
-  width: 60%;
+  width: 80%;
 }
 /* Drawer Component */
 .drawer .MuiPaper-elevation {
@@ -1129,9 +1136,15 @@ body {
   .search {
     display: none;
   }
+  .header-icons {
+    padding: 0.5rem 0.6rem;
+    margin: 0rem 0.2rem;
+  }
+  .header-icons svg {
+    padding: 0.3rem 0.6rem;
+  }
   .header-icons.menu {
     display: flex;
-    padding: 0.5rem 0.5rem;
   }
   .hero-post {
     margin-top: -2rem !important;

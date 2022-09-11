@@ -7,6 +7,7 @@ import ThemeSwitcher from "./components/commons/ThemeSwitcher";
 import ModeState from "./context/modeState";
 import BlogState from "./context/blogState";
 import UserState from "./context/userState";
+import BookmarkState from "./context/bookmarkState";
 import BlogFormState from "./context/blogFormState";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +25,9 @@ function App() {
     if (!localStorage.getItem("mode")) {
       localStorage.setItem("mode", "light");
     }
+    if (!localStorage.getItem("blog-bookmarks")) {
+      localStorage.setItem("blog-bookmarks", JSON.stringify([]));
+    }
 
     //eslint-disable-next-line
   }, []);
@@ -35,43 +39,45 @@ function App() {
           <BlogState>
             <UserState>
               <BlogFormState>
-                <LoadingBar
-                  color={
-                    localStorage.getItem("mode") === "dark"
-                      ? "var(--color-primary)"
-                      : "var(--color-secondary)"
-                  }
-                  progress={progress}
-                  height={3}
-                />
-                <ToastContainer
-                  autoClose={2000}
-                  position="top-right"
-                  pauseOnHover={true}
-                  draggable={true}
-                  theme="dark"
-                  toastClassName="toast-custom"
-                />
-                <ThemeSwitcher />
-                <Routes>
-                  <Route
-                    path="/"
-                    element={<Home setProgress={setProgress} />}
+                <BookmarkState>
+                  <LoadingBar
+                    color={
+                      localStorage.getItem("mode") === "dark"
+                        ? "var(--color-primary)"
+                        : "var(--color-secondary)"
+                    }
+                    progress={progress}
+                    height={3}
                   />
-                  <Route path="/auth" element={<Auth />} />
-                  <Route
-                    path="/blog"
-                    element={<Blog setProgress={setProgress} />}
+                  <ToastContainer
+                    autoClose={2000}
+                    position="top-right"
+                    pauseOnHover={true}
+                    draggable={true}
+                    theme="dark"
+                    toastClassName="toast-custom"
                   />
-                  <Route
-                    path="/blog/:slug"
-                    element={<SingleBlog setProgress={setProgress} />}
-                  />
-                  <Route
-                    path="/dashboard/*"
-                    element={<Dashboard setProgress={setProgress} />}
-                  />
-                </Routes>
+                  <ThemeSwitcher />
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={<Home setProgress={setProgress} />}
+                    />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route
+                      path="/blog"
+                      element={<Blog setProgress={setProgress} />}
+                    />
+                    <Route
+                      path="/blog/:slug"
+                      element={<SingleBlog setProgress={setProgress} />}
+                    />
+                    <Route
+                      path="/dashboard/*"
+                      element={<Dashboard setProgress={setProgress} />}
+                    />
+                  </Routes>
+                </BookmarkState>
               </BlogFormState>
             </UserState>
           </BlogState>

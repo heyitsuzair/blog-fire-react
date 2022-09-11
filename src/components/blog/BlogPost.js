@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid } from "@mui/material";
 import { Interweave } from "interweave";
 import FloatingBtn from "./FloatingBtn";
+import bookmarkContext from "../../context/bookmarkContext";
 
 export default function BlogPost({ blog }) {
+  // bookmark context
+  const bookmark_context = useContext(bookmarkContext);
+  const { addBookmark } = bookmark_context;
+
   const action = () => {
-    console.log("hello");
+    addBookmark(blog);
   };
 
   return (
