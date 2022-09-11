@@ -35,8 +35,8 @@ body {
   font-family: "Poppins";
   background-color: var(--bg-color-gray);
   color: var(--color-body);
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   overflow-x: hidden;
 }
 .dark {
@@ -221,6 +221,25 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 1rem 1rem;
+}
+.drawer .sidebar-post {
+  background-color: var(--bg-color-gray);
+  border-radius: var(--radius);
+  padding: 1rem 0;
+  width: 95%;
+  margin: 1rem auto;
+}
+.drawer .sidebar-post .img-parent {
+  margin: auto;
+}
+.drawer .remove-bookmark-btn {
+  text-align: center;
+}
+.drawer .removeBookmark {
+  background-color: var(--color-primary) !important;
+  width: 95%;
+  margin: auto;
+  font-family: "Poppins";
 }
 /* Lists Component */
 .lists {
@@ -971,10 +990,14 @@ body {
 }
 .blog-post .markup {
   margin-top: 2rem;
+  overflow-wrap: break-word;
 }
 .blog-post .markup * {
   background-color: var(--color-black-light) !important;
   color: var(--color-heading) !important;
+}
+.blog-post .markup img {
+  width: 250px;
 }
 /* Floating Button Component */
 

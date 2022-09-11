@@ -7,6 +7,8 @@ import HeaderRight from "./HeaderRight";
 import { useContext } from "react";
 import modeContext from "../../context/modeContext";
 import userContext from "../../context/userContext";
+import { Link } from "react-router-dom";
+
 export default function Header() {
   // using the mode context to check whether mode is light or dark and according to criteria switching the brand image
   const mode_context = useContext(modeContext);
@@ -23,11 +25,13 @@ export default function Header() {
     <div className="header">
       <Grid container>
         <Grid item md={2} xs={4} sm={10}>
-          <img
-            src={mode === "light" ? logo_black : logo_white}
-            alt="Loading..."
-            className="brand"
-          />
+          <Link to="/">
+            <img
+              src={mode === "light" ? logo_black : logo_white}
+              alt="Loading..."
+              className="brand"
+            />
+          </Link>
         </Grid>
         <Grid
           item

@@ -7,6 +7,7 @@ export default function ModeState({ children }) {
   // bookmarks state
   const [bookmarks, setBookmarks] = useState();
 
+  // function to add blog to bookmark
   const addBookmark = (blog) => {
     console.log(bookmarks);
     // check if the incoming blog is already in bookmark than show warning else add to bookmark
@@ -31,6 +32,17 @@ export default function ModeState({ children }) {
     }
   };
 
+  // function to remove bookmarked blog
+  const removeBookmark = (blogId) => {
+    const filteredBookmarks = bookmarks.filter((bookmark) => {
+      return bookmark.id !== blogId;
+    });
+    // changing in state
+    setBookmarks(filteredBookmarks);
+    // changing in local storage
+    localStorage.setItem("blog-bookmarks", JSON.stringify(filteredBookmarks));
+  };
+
   useEffect(() => {
     // set the default theme mode got from localStorage mode item
     setBookmarks(JSON.parse(localStorage.getItem("blog-bookmarks")));
@@ -38,7 +50,9 @@ export default function ModeState({ children }) {
   }, []);
 
   return (
-    <bookmarkContext.Provider value={{ bookmarks, addBookmark }}>
+    <bookmarkContext.Provider
+      value={{ bookmarks, addBookmark, removeBookmark }}
+    >
       {children}
     </bookmarkContext.Provider>
   );
