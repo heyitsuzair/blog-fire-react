@@ -16,6 +16,7 @@ import Blog from "./pages/Blog";
 import SingleBlog from "./pages/SingleBlog";
 
 import LoadingBar from "react-top-loading-bar";
+import Search from "./pages/Search";
 
 function App() {
   // state for progress bar
@@ -71,6 +72,10 @@ function App() {
                     <Route
                       path="/blog/:slug"
                       element={<SingleBlog setProgress={setProgress} />}
+                    />
+                    <Route
+                      path="/search/:string"
+                      element={<Search setProgress={setProgress} />}
                     />
                     <Route
                       path="/dashboard/*"

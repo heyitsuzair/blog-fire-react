@@ -159,6 +159,7 @@ body {
   background-color: var(--bg-color-gray);
   outline: none;
   color: var(--color-gray);
+  font-family: "Poppins";
 }
 .search {
   color: var(--color-gray);
@@ -240,6 +241,11 @@ body {
   width: 95%;
   margin: auto;
   font-family: "Poppins";
+}
+.drawer .search {
+  display: flex;
+  width: 86%;
+  margin: 1rem auto;
 }
 /* Lists Component */
 .lists {
@@ -1102,6 +1108,28 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+/* Search Page */
+.no-result {
+  color: var(--color-heading);
+  margin-top: 2rem;
+  background-color: var(--color-white);
+  padding: 2rem 2rem;
+  border-radius: var(--radius);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.no-result-spinner {
+  color: var(--color-heading);
+  margin-top: 2rem;
+  background-color: var(--color-white);
+  padding: 2rem 2rem;
+  border-radius: var(--radius);
+}
+.no-result h4 {
+  color: var(--color-primary);
+  cursor: pointer;
 }
 /* Media Queries */
 @media (max-width: 1199px) {

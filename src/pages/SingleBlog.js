@@ -41,13 +41,14 @@ export default function Blog({ setProgress }) {
   };
 
   useEffect(() => {
-    setProgress(0);
-    setProgress(50);
     gettingAllBlogs();
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
+    setProgress(0);
+    setProgress(50);
+    setLoading(true);
     setProgress(70);
     getBlogInfo(slug);
     //eslint-disable-next-line
