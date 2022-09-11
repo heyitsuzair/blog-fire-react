@@ -29,6 +29,7 @@ export default function BlogPost({ blog }) {
   document.title = blog.title;
 
   useEffect(() => {
+    // adding view when someone visits blog
     setDoc(doc(db, "blogs", blog.id), {
       category: blog.category,
       content: blog.content,
@@ -40,7 +41,6 @@ export default function BlogPost({ blog }) {
       views: parseInt(blog.views + 1),
       date: blog.date,
     });
-
     //eslint-disable-next-line
   }, [blog.slug]);
 
