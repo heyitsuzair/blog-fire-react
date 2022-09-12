@@ -3,8 +3,6 @@ import { List, ListItemButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import userContext from "../../context/userContext";
-import SearchComponent from "./Search";
-
 export default function NestedList() {
   // use the following state to check whether user is logged in or not and according to condition show the "My Account" in menu
   const user_context = useContext(userContext);

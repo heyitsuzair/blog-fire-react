@@ -44,7 +44,7 @@ export default function Innovation() {
     setLoading(true);
     filterBlogs();
     // eslint-disable-next-line
-  }, [active]);
+  }, []);
 
   return (
     <div className="most-popular">
