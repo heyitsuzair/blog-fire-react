@@ -1218,6 +1218,10 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+  .post-item {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
   .post-item .author-info-inner {
     flex-direction: column;
     gap: 3rem;
