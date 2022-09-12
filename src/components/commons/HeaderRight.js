@@ -22,7 +22,7 @@ export default function HeaderRight() {
 
   const { bookmarks, removeBookmark } = bookmark_context;
 
-  if (bookmarks === undefined) {
+  if (bookmarks === null) {
     return;
   }
 
