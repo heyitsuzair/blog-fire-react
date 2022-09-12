@@ -1,1 +1,1 @@
-This project is under development by Muhammad Uzair Using Firebase and React. Made With :heart: By Uzair
+This project is developed by Muhammad Uzair Using React and Firebase.It is live at https://blog-firereact-uzair.vercel.app Made With :heart: By Uzair
