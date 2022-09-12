@@ -56,7 +56,7 @@ export default function Card({ blog }) {
                 className="hover-line"
                 ref={lineRef}
               >
-                {blog.title.substr(0, 20)}
+                {blog.title}
               </Link>
             </h2>
           </div>
