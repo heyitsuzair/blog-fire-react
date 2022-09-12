@@ -29,6 +29,7 @@ export default function SidebarPost({ blog }) {
         className="sidebar-post"
         onMouseEnter={() => handleMouseEnter()}
         onMouseLeave={() => handleMouseLeave()}
+        alignItems="center"
       >
         <Grid item lg={4} xs={5} sm={3} md={2} className="sidebar-post-item">
           <div className="img-parent">
