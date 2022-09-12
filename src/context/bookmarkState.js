@@ -45,7 +45,6 @@ export default function ModeState({ children }) {
 
   useEffect(() => {
     // set the default theme mode got from localStorage mode item
-    console.log(JSON.parse(localStorage.getItem("blog-bookmarks")));
     setBookmarks(JSON.parse(localStorage.getItem("blog-bookmarks")));
     //eslint-disable-next-line
   }, []);
