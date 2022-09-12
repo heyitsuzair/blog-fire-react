@@ -18,7 +18,11 @@ export default function ModeState({ children }) {
   };
   useEffect(() => {
     // set the default theme mode got from localStorage mode item
-    setMode(localStorage.getItem("mode"));
+    setMode(
+      localStorage.getItem("mode") === null
+        ? "light"
+        : localStorage.getItem("mode")
+    );
     document.body.classList.add(localStorage.getItem("mode"));
     //eslint-disable-next-line
   }, []);
