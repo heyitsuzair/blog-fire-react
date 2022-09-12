@@ -19,9 +19,6 @@ export default function NestedList() {
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
-      <div>
-        <SearchComponent />
-      </div>
       <ListItemButton>
         <Link to="/" className="list-item">
           Home
