@@ -10,6 +10,7 @@ export default function FloatingBtn({ action, icon, btnClass, position }) {
         position: "fixed",
         right: position === "bottom-right" ? 0 : 70,
         bottom: 0,
+        zIndex: 999,
       }}
     >
       <Fab
