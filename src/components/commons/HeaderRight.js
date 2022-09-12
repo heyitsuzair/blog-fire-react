@@ -18,16 +18,8 @@ export default function HeaderRight() {
     left: false,
     right: false,
   });
-  // bookmarks work start
 
   const { bookmarks, removeBookmark } = bookmark_context;
-
-  if (bookmarks === undefined) {
-    console.log(bookmarks);
-    return;
-  }
-
-  // bookmarks work end
 
   // toggle drawer function
   const toggleDrawer = (anchor, open) => (event) => {
@@ -40,6 +32,11 @@ export default function HeaderRight() {
 
     setState({ ...state, [anchor]: open });
   };
+
+  if (bookmarks === undefined) {
+    console.log(bookmarks);
+    return true;
+  }
 
   return (
     <>
