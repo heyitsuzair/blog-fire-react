@@ -33,10 +33,6 @@ export default function HeaderRight() {
     setState({ ...state, [anchor]: open });
   };
 
-  if (bookmarks.length === null) {
-    return true;
-  }
-
   return (
     <>
       <SearchComponent />
