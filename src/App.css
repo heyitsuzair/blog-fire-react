@@ -1247,7 +1247,7 @@ body {
     padding: 0.7rem 0.7rem;
   }
   .card .desc {
-    height: 110px;
+    height: auto;
   }
 }
 @media (max-width: 600px) {
