@@ -36,8 +36,13 @@ export default function HeaderRight() {
   return (
     <>
       <SearchComponent />
-      {bookmarks.length === null ? (
-        ""
+      {bookmarks === undefined ? (
+        <div
+          className="header-icons"
+          onClick={() => toast.warning("No Bookmarks Found!")}
+        >
+          <Bookmark />
+        </div>
       ) : bookmarks.length > 0 ? (
         <div className="header-icons" onClick={toggleDrawer("right", true)}>
           {bookmarks.length}
