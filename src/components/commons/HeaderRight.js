@@ -37,7 +37,7 @@ export default function HeaderRight() {
   };
 
   useEffect(() => {
-    if (bookmarks === undefined) {
+    if (bookmarks.length === undefined) {
       console.log("undefined");
       return;
     }
