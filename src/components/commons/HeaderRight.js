@@ -38,6 +38,7 @@ export default function HeaderRight() {
 
   useEffect(() => {
     if (bookmarks === undefined) {
+      console.log("undefined");
       return;
     }
     //eslint-disable-next-line
