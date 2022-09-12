@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Bookmark } from "@mui/icons-material";
 import Drawer from "./Drawer";
 import SearchComponent from "./Search";
@@ -18,8 +18,11 @@ export default function HeaderRight() {
     left: false,
     right: false,
   });
+  // bookmarks work start
 
   const { bookmarks, removeBookmark } = bookmark_context;
+
+  // bookmarks work end
 
   // toggle drawer function
   const toggleDrawer = (anchor, open) => (event) => {
@@ -33,17 +36,17 @@ export default function HeaderRight() {
     setState({ ...state, [anchor]: open });
   };
 
+  useEffect(() => {
+    if (bookmarks === undefined) {
+      return;
+    }
+    //eslint-disable-next-line
+  }, [bookmarks]);
+
   return (
     <>
       <SearchComponent />
-      {bookmarks === undefined ? (
-        <div
-          className="header-icons"
-          onClick={() => toast.warning("No Bookmarks Found!")}
-        >
-          <Bookmark />
-        </div>
-      ) : bookmarks.length > 0 ? (
+      {bookmarks.length > 0 ? (
         <div className="header-icons" onClick={toggleDrawer("right", true)}>
           {bookmarks.length}
         </div>
