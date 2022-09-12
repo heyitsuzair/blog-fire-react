@@ -36,7 +36,9 @@ export default function HeaderRight() {
   return (
     <>
       <SearchComponent />
-      {bookmarks.length > 0 ? (
+      {bookmarks.length === null ? (
+        ""
+      ) : bookmarks.length > 0 ? (
         <div className="header-icons" onClick={toggleDrawer("right", true)}>
           {bookmarks.length}
         </div>
