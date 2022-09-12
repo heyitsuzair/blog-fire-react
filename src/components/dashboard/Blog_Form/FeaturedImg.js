@@ -17,15 +17,6 @@ export default function FeaturedImg({ onChange, value, setProgress }) {
   const handleOnChange = (e) => {
     const file = e.target.files[0];
 
-    const k = 1024;
-
-    const i = Math.floor(Math.log(file.size) / Math.log(k));
-    const fileSize = `${parseFloat(file.size / Math.pow(k, i))}`;
-
-    if (fileSize > 5) {
-      toast.warning("Image Size Must Be Below 5 MB!");
-      return;
-    }
     setProgress(30);
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -54,12 +45,10 @@ export default function FeaturedImg({ onChange, value, setProgress }) {
         <div>
           {location.pathname.match("/dashboard/editBlog") ? (
             <>
-              <p>Image Size Must Not Be More Than 5 MB</p>
               <button onClick={() => handleBtnClick()}>Change Image</button>
             </>
           ) : (
             <>
-              <p>Image Size Must Not Be More Than 5 MB</p>
               <button onClick={() => handleBtnClick()}>Upload Image</button>
             </>
           )}
