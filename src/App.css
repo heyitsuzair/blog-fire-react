@@ -388,6 +388,7 @@ body {
 }
 .card .desc {
   width: 70%;
+  height: 210px;
 }
 .card .card-img-parent {
   overflow: hidden;
