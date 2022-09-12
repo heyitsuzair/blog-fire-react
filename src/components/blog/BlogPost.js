@@ -131,7 +131,7 @@ export default function BlogPost({ blog }) {
             <Grid
               container
               justifyContent={
-                blog.category.length === 2 ? "flex-start" : "space-between"
+                blog.category.length === 2 ? "space-evenly" : "space-between"
               }
             >
               {blog.category.map((cat, index) => {
