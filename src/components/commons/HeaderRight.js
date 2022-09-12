@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Bookmark } from "@mui/icons-material";
 import Drawer from "./Drawer";
 import SearchComponent from "./Search";
@@ -35,14 +35,6 @@ export default function HeaderRight() {
 
     setState({ ...state, [anchor]: open });
   };
-
-  useEffect(() => {
-    if (bookmarks.length === undefined) {
-      console.log("undefined");
-      return;
-    }
-    //eslint-disable-next-line
-  }, [bookmarks]);
 
   return (
     <>

@@ -5,7 +5,7 @@ import bookmarkContext from "./bookmarkContext";
 
 export default function ModeState({ children }) {
   // bookmarks state
-  const [bookmarks, setBookmarks] = useState();
+  const [bookmarks, setBookmarks] = useState([]);
 
   // function to add blog to bookmark
   const addBookmark = (blog) => {
@@ -45,6 +45,7 @@ export default function ModeState({ children }) {
 
   useEffect(() => {
     // set the default theme mode got from localStorage mode item
+    console.log(JSON.parse(localStorage.getItem("blog-bookmarks")));
     setBookmarks(JSON.parse(localStorage.getItem("blog-bookmarks")));
     //eslint-disable-next-line
   }, []);

@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export default function FeaturedImg({ onChange, value, setProgress }) {
   // get current url and show the upload image button or remove image button
@@ -45,10 +44,12 @@ export default function FeaturedImg({ onChange, value, setProgress }) {
         <div>
           {location.pathname.match("/dashboard/editBlog") ? (
             <>
+              <p>Recommended Image Size 800 x 400</p>
               <button onClick={() => handleBtnClick()}>Change Image</button>
             </>
           ) : (
             <>
+              <p>Recommended Image Size 800 x 400</p>
               <button onClick={() => handleBtnClick()}>Upload Image</button>
             </>
           )}
