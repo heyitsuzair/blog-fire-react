@@ -27,7 +27,7 @@ export default function HorizontalTab({
           <div className="category">
             <span>{category}</span>
           </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to={`blog/${blog.slug}`} style={{ textDecoration: "none" }}>
             <h3 className="desc card-h3">{blog.title}</h3>
           </Link>
           <div className="author-info">
