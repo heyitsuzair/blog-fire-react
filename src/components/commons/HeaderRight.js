@@ -33,8 +33,7 @@ export default function HeaderRight() {
     setState({ ...state, [anchor]: open });
   };
 
-  if (bookmarks === undefined) {
-    console.log(bookmarks);
+  if (bookmarks.length === null) {
     return true;
   }
 
