@@ -31,7 +31,7 @@ export default function PostContentItem({ blogs }) {
                     <div className="img">
                       <img
                         src={blog.userInfo.pic}
-                        style={{ borderRadius: "50%" }}
+                        style={{ borderRadius: "50%",width:'3rem' }}
                         alt="Author"
                       />
                     </div>
