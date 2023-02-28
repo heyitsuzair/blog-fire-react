@@ -63,7 +63,7 @@ export default function Card({ blog }) {
           <div className="author">
             <img
               src={blog.userInfo.pic}
-              style={{ borderRadius: "50%" }}
+              style={{ borderRadius: "50%", width: "3rem" }}
               alt="Author"
             />
             <div className="author-info">
